@@ -1,0 +1,17 @@
+gDevice originally defined in "hardware_commands.tcl" (I could only find it's not
+defined as global)
+
+gDevice is a array varible.
+
+set gDevice(all_motors_blocked) $operationID
+
+
+It look little confused in the following form
+set gDevice($motor,lockOn) $value
+set gDevice($motor,upperLimitOn) $value
+
+here "$motor,lockOn" look like two keys. But actually it's one key. there's
+no space seperate the "," (it's kind of tricky). For example if $motor is 12,
+the key will be look like "12,lockOn" it's still a one key.
+
+

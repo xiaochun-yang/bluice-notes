@@ -1,0 +1,56 @@
+start ./startdcs again after the first fail. The following
+messages are in the dcss log
+
+.......................
+11/02/11 11:13:58 3086379568     INFO    system_idle at 314 {src/dcss_database.c 300  }
+11/02/11 11:13:58 3086379568     INFO    system_idle address 0xb7334a30 {src/dcss_database.c 306  }
+11/02/11 11:13:58 3086379568     INFO    beamline = X4A {src/dcss_main.c 586  }
+11/02/11 11:13:58 3086379568     INFO    Loaded config from file ../../dcsconfig/data/X4A.config {src/dcss_main.c 674  }
+11/02/11 11:13:58 3086379568     INFO    Starting Servers: scripting engine port = 14244 hardware port = 14242 gui port = 14243 {src/dcss_main.c 678  }
+11/02/11 11:13:58 3086379568     INFO    imperson host = localhost, port = 61001 {src/dcss_main.c 682  }
+11/02/11 11:13:58 3086379568     INFO    imgsrv host = localhost, guiPort = 14005, webPort = 14006, httpPort = 14007 {src/dcss_main.c 688  }
+11/02/11 11:13:58 3086379568   FINEST    get default username from config file {src/dcss_main.c 2170  }
+11/02/11 11:13:58 3086379568   FINEST    get default username from who started {src/dcss_main.c 2172  }
+11/02/11 11:13:58 3086379568   FINEST    default username: nysbc {src/dcss_main.c 2188  }
+11/02/11 11:13:58 3086379568     INFO    got stored session: {C7A69AB} {src/dcss_main.c 2223  }
+11/02/11 11:13:58 3086379568     INFO    set C gSessionID to {C7A69AB} {src/dcss_main.c 2238  }
+11/02/11 11:13:58 3086379568     INFO    validating {src/dcss_main.c 2240  }
+11/02/11 11:13:59 3086379568     INFO    START HTTP RESPONSE {src/AuthClient.cxx 649  }
+11/02/11 11:13:59 3086379568     INFO    HTTP/1.1 200 OK {src/AuthClient.cxx 653  }
+11/02/11 11:13:59 3086379568     INFO    Auth.Method: NA {src/AuthClient.cxx 662  }
+11/02/11 11:13:59 3086379568     INFO    Auth.NA: NA {src/AuthClient.cxx 662  }
+11/02/11 11:13:59 3086379568     INFO    Auth.SessionAccessed: NA {src/AuthClient.cxx 662  }
+11/02/11 11:13:59 3086379568     INFO    Auth.SessionCreation: NA {src/AuthClient.cxx 662  }
+11/02/11 11:13:59 3086379568     INFO    Auth.SessionKey: NA {src/AuthClient.cxx 662  }
+11/02/11 11:13:59 3086379568     INFO    Auth.SessionValid: FALSE {src/AuthClient.cxx 662  }
+11/02/11 11:13:59 3086379568     INFO    Auth.UserID: NA {src/AuthClient.cxx 662  }
+11/02/11 11:13:59 3086379568     INFO    Content-Length: 139 {src/AuthClient.cxx 662  }
+11/02/11 11:13:59 3086379568     INFO    Content-Type: text/plain;charset=ISO-8859-1 {src/AuthClient.cxx 662  }
+11/02/11 11:13:59 3086379568     INFO    Date: Wed, 02 Nov 2011 15:13:59 GMT {src/AuthClient.cxx 662  }
+11/02/11 11:13:59 3086379568     INFO    Server: Apache-Coyote/1.1 {src/AuthClient.cxx 662  }
+11/02/11 11:13:59 3086379568     INFO     {src/AuthClient.cxx 664  }
+11/02/11 11:13:59 3086379568     INFO    Auth.SessionKey=NA^M
+Auth.NA=NA^M
+Auth.SessionValid=FALSE^M
+Auth.SessionCreation=NA^M
+Auth.SessionAccessed=NA^M
+Auth.UserID=NA^M
+Auth.Method=NA^M
+ {src/AuthClient.cxx 666  }
+11/02/11 11:13:59 3086379568     INFO    END HTTP RESPONSE {src/AuthClient.cxx 668  }
+11/02/11 11:13:59 3086379568  WARNING    http DebugMsg http all Done {src/AuthClient.cxx 508  }
+11/02/11 11:13:59 3086379568     INFO    validate session failed {src/dcss_main.c 2250  }
+11/02/11 11:14:04 3086379568  WARNING    domain {.nsls.bnl.gov} size not match host {localhost} size {src/HttpCookie.cxx 248  }
+11/02/11 11:14:04 3086379568     INFO    set C gSessionID to {7C7BE67B783A15D4FDEBF3D0B1A2D685} {src/dcss_main.c 2308  }
+11/02/11 11:14:04 3086379568     INFO    new session id {7C7BE67B783A15D4FDEBF3D0B1A2D685} stored {src/dcss_main.c 2323  }
+11/02/11 11:14:04 3086379568     INFO    Initiliaze gui client {src/dcss_main.c 703  }
+11/02/11 11:14:04 3086379568     INFO    initialize master client data {src/dcss_main.c 710  }
+11/02/11 11:14:04 3086379568     INFO    display: category=local, host=dontcare, display=dkong, description=Beamline console {src/dcss_gui_client.c 431  }
+11/02/11 11:14:04 3086379568     INFO    display: category=local, host=dontcare, display=dkong, description=Beamline console {src/dcss_gui_client.c 431  }
+11/02/11 11:14:04 3086379568     INFO    display: category=local, host=dontcare, display=dkong, description= {src/dcss_gui_client.c 431  }
+11/02/11 11:14:04 3086379568     INFO    display: category=local, host=130.199.193.13, display=:0.0, description= {src/dcss_gui_client.c 431  }
+11/02/11 11:14:04 3086379568     INFO    display: category=local, host=130.199.193.13, display=:1.0, description= {src/dcss_gui_client.c 431  }
+11/02/11 11:14:04 3086379568     INFO    display: category=local, host=x4hhmi4.nsls.bnl.gov, display=:0.0, description= {src/dcss_gui_client.c 431  }
+...............
+
+dcss start with no problem

@@ -1,0 +1,13 @@
+error messsage: during screening process
+
+error server screening videoSnapshot with beam info error: Exception in thread  main  java.lang.NoClassDefFoundError: url
+
+solution to get rid of this message
+
+set ADD_BEAM_INFO_TO_JPEG 0 
+
+at file SequenceDevice.tcl under the ../dcss/scrips/operation
+
+somehow I don't get the beam info at the same place as SSRF. 
+need to dig out further if this info needed in the future.
+

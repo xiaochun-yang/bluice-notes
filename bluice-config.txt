@@ -1,0 +1,24 @@
+The *.config file is readed by the function
+
+body DCS::Config::loadFile { file arrName } 
+
+int the file Config.tcl under /DcsWidgets
+
+All the config info are divided in two parts by the "=".
+The part before the "=" is called "name"
+The part after the "=" is called "value"
+
+They are treated as key --> $name and value --> $value
+and saved in the name config
+
+so it's like   config($name)=$value
+
+or m_config and m_defaultConfig (config)
+
+*************************************************
+mediator is defined in the Component.tcl 
+register is a public method of the mediator.
+
+**************************************************
+
+

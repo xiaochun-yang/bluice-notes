@@ -1,0 +1,24 @@
+A important thing need to be pay attention in writing a device for
+a sudo motor is that the function name can't be the same.
+
+For example:
+
+In sample_x.tcl
+
+proc tripot_1_calculate_x { x z y } {
+
+    return [expr ($z - $y*11.1125/97 - $x*19.225/97)]
+}
+
+In sample_y.tcl
+
+proc tripot_1_calculate_y { y x z } {
+
+    return [expr ($z - $y*11.1125/97 - $x*19.225/97)]
+}
+
+You either don't define  tripot_1_calculate in the sample_y.tcl or
+use different name like "tripot_1_calculate_y". If same name used,
+tcl will be confused. 
+
+ 

@@ -1,0 +1,27 @@
+The following messages are stored in the dcss log file when dcss faied
+to start when every time computer reboot.
+
+..................
+11/02/11 10:56:04 3086699056     INFO    system_idle at 314 {src/dcss_database.c 300  }
+11/02/11 10:56:04 3086699056     INFO    system_idle address 0xb7382a30 {src/dcss_database.c 306  }
+11/02/11 10:56:04 3086699056     INFO    beamline = X4A {src/dcss_main.c 586  }
+11/02/11 10:56:04 3086699056     INFO    Loaded config from file ../../dcsconfig/data/X4A.config {src/dcss_main.c 674  }
+11/02/11 10:56:04 3086699056     INFO    Starting Servers: scripting engine port = 14244 hardware port = 14242 gui port = 14243 {src/dcss_main.c 678  }
+11/02/11 10:56:04 3086699056     INFO    imperson host = localhost, port = 61001 {src/dcss_main.c 682  }
+11/02/11 10:56:04 3086699056     INFO    imgsrv host = localhost, guiPort = 14005, webPort = 14006, httpPort = 14007 {src/dcss_main.c 688  }
+11/02/11 10:56:04 3086699056   FINEST    get default username from config file {src/dcss_main.c 2170  }
+11/02/11 10:56:04 3086699056   FINEST    get default username from who started {src/dcss_main.c 2172  }
+11/02/11 10:56:04 3086699056   FINEST    default username: nysbc {src/dcss_main.c 2188  }
+11/02/11 10:56:04 3086699056     INFO    got stored session: {C7A69AB} {src/dcss_main.c 2223  }
+11/02/11 10:56:04 3086699056     INFO    set C gSessionID to {C7A69AB} {src/dcss_main.c 2238  }
+11/02/11 10:56:04 3086699056     INFO    validating {src/dcss_main.c 2240  }
+11/02/11 10:56:09 3086699056  WARNING    BIO_wait select timeout {src/SSLCommon.cxx 319  }
+11/02/11 10:56:09 3086699056  WARNING    updateSession failed in finishWriteRequest BIO_wait timeout {src/AuthClient.cxx 473  }
+11/02/11 10:56:09 3086699056  WARNING    http DebugMsg sending request line {src/AuthClient.cxx 475  }
+11/02/11 10:56:09 3086699056   SEVERE    catched error {src/dcss_main.c 2253  }
+11/02/11 10:56:09 3086699056   SEVERE    BIO_wait timeout {src/dcss_main.c 2254  }
+11/02/11 10:56:19 3086699056  WARNING    BIO_wait select timeout {src/SSLCommon.cxx 319  }
+11/02/11 10:56:19 3086699056  WARNING    createSession failed in finishWriteRequest BIO_wait timeout {src/AuthClient.cxx 289  }
+11/02/11 10:56:19 3086699056   SEVERE    BIO_wait timeout {src/dcss_main.c 2310  }
+
+dcss terminated at this point.

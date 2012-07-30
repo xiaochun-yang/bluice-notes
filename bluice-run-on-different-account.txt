@@ -1,0 +1,33 @@
+here is what I did for runing bluice in different account in the same machine.
+new account nesg
+old account nysbc
+
+1) edit file SimpleUserDB.xml in /usr/local/dcs/apache-tomcat-5.5.20/webapps/gateway/WEB-INF/
+	add user "nesg" and set password
+
+2) copy .cshrc file from nysbc and also starttomcat, shuttomcat startdcs stopdcs and startbluice
+
+3) go to /tmp (become super) cheange all bluice lock files to group accessible.
+
+4) go to /usr/local/dcs/xos/src edit file xos.c
+
+change statbuf.st_uid != geteuid( )
+to     statbuf.st_gid != getegid( )
+
+this will prevent checking user ids (it will always get errors if checking for different users
+because each user has unique ids). 
+
+This part need to be reserched further. should talk to Shanghai and SSRL and see how they
+handled this problem.
+
+Once this is being changed. It need to recompile entire bluice files not only for the dir
+.../xos it should be executed in /usr/local/dcs/batchfile 
+make clean uninstall
+make
+
+Otherwise it will not work because many files in the bluice linked to xos files already.
+
+5) go to /usr/local/dcs/X4A change *.dat file mode to be able to access by all the users
+I simplely use chmod 777 for all the *.dat file here. 
+
+Once 1) to 5) are done. It's ready to run the bluice in the new account.

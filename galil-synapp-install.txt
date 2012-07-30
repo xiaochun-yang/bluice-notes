@@ -1,0 +1,35 @@
+SynApp installation.
+
+1) Download SynApps_5_5 (it can compiled with base 3.14.12.1)
+
+2) mkdir /usr/local/epics/support/soft and put SynApps under soft dir
+
+3) edit configure/RELASE for SUPPORT and EPICS_BASE
+
+4) read "README" file for make information
+
+
+Galil for bluice
+
+1) go to dir 1-4 at whereever it's being saved and read "README"
+
+2) edit RELEASE to the following
+
+EPICS_BASE=/usr/local/epics/base
+TEMPLATE_TOP=$(EPICS_BASE)/templates/makeBaseApp/top
+INSTALL_LOCATION_APP=/usr/local/epics/support/hard/galil/1-4
+SNCSEQ=/usr/local/epics/support/soft/synApps/support/seq-2-0-12
+MOTOR=/usr/local/epics/support/soft/synApps/support/motor-6-5
+
+3) make
+
+4) the built files will be goes to /usr/local/epics/support/hard/galil/1-4
+
+5) in st_C#.cmd file, the first line
+
+"#!../../bin/linux-x86_64/galilTest"
+should change to 
+"#!../../bin/linux-x86/galilTest"
+
+Recompile epicsgw_galil directory (it's a replacement for ../epicsgw)
+run epicsgw from ../epicsgw_galil/linux in stead of ../epicsgw/linux

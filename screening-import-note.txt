@@ -1,0 +1,37 @@
+problem: Import in the screening dose not working.
+
+solution:
+
+(1) impdhs must be runing
+
+(2) screening.latestEventIdUr
+    screening.cassetteDataUrl
+    screening.silIdAndEventIdUrl
+
+must set to 8080 no secue port as following
+
+screening.latestEventIdUrl=http://localhost:8080/crystals/getLatestEventId.do
+screening.defaultSILUrl=https://localhost:8443/crystals/createDefaultSil.do
+screening.uploadSILUrl=https://localhost:8443/crystals/uploadSil.do
+screening.downloadSILUrl=https://localhost:8443/crystals/downloadSil.do
+screening.lockSILUrl=https://localhost:8443/crystals/setSilLock.do
+screening.unassignSILUrl=https://localhost:8443/crystals/unassignSil.do
+screening.deleteSILUrl=https://localhost:8443/crystals/deleteSil.do
+screening.moveCrystalUrl=https://localhost:8443/crystals/moveCrystal.do
+
+screening.cassetteDataUrl=http://localhost:8080/crystals/getCassetteData.do
+#screening.cassetteInfoUrl=https://localhost:8443/crystals/CassetteInfo.jsp
+screening.cassetteInfoUrl=https://localhost:8443/crystals/CassetteList.html
+
+screening.crystalDataUrl=https://localhost:8443/crystals/getCrystalData.do
+screening.crystalUpdateUrl=https://localhost:8443/crystals/updateCrystalData.do
+screening.crystalEditUrl=https://localhost:8443/crystals/setCrystal.do
+screening.crystalSetAttributeUrl=https://localhost:8443/crystals/setCrystalAttribute.do
+screening.crystalGetChangesUrl=https://localhost:8443/crystals/getChangesSince.do
+screening.crystalClearImagesUrl=https://localhost:8443/crystals/clearCrystalImages.do
+screening.crystalClearResultsUrl=https://localhost:8443/crystals/clearCrystal.do
+screening.crystalClearAllCrystalsUrl=https://localhost:8443/crystals/clearAllCrystals.do
+screening.crystalAddImageUrl=https://localhost:8443/crystals/addCrystalImage.do
+screening.SILRowDataUrl=https://localhost:8443/crystals/jsp/getRow.jsp
+
+screening.silIdAndEventIdUrl=http://localhost:8080/crystals/getSilIdAndEventId.do

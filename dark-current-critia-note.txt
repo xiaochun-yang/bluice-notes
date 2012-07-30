@@ -1,0 +1,42 @@
+When a dark current will be taken by the following code.
+
+ //check to see if user requested to reuse last good dark image
+ if ( !reuseDark )
+ {
+       // check to see if dark image has expired or if the exposure time has changed too much.
+       if ( ( time(0) - mDark[ frame.runIndex ].creationTime > mDarkRefreshTime ) ||
+         ( fabs( frame.exposureTime / mDark[frame.runIndex].exposureTime - 1.0 ) > mDarkExposureTolerance ) )
+       {
+              // collect a new dark image
+              mDark[frame.runIndex].isValid = FALSE;
+        }
+ }
+( from dhs_Quantum4.cc)
+
+
+mDarkExposureTolerance is defined in the Config file (0.1 at X4A.config)
+
+Need to find out the meaning of the following parameters. 
+
+frame.exposureTime			Assume this is the new time
+mDark[frame.runIndex].exposureTime      Assume this is the old time
+
+if change from 10 seconds to 11 seconds
+fabs( frame.exposureTime / mDark[frame.runIndex].exposureTime - 1.0 ) = 0.09
+it's less 0.1 (for X4A case). It will not collect dark current. of course, it will
+have to satisfy the other part of it.
+
+
+Above routine will not collect dark current every time even the "use last
+dark" is not checked. if you want to collect dark on every time when the "use
+last dark" is unchecked, Then the above code is needed to simply change to as
+the following
+
+if ( !reuseDark )
+ {
+      // collect a new dark image
+      mDark[frame.runIndex].isValid = FALSE;
+ }
+
+
+

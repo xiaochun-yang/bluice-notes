@@ -1,0 +1,23 @@
+
+In the mount/dismount (manually). The following changed add so that that rebot
+status will be updated and also the when the spot empty it will show the black
+spot, it will show the green when the sample on the spot. This is from mount.
+dismount is added similia code. 
+
+
+      set robot_status [lreplace $robot_status 15 15 "$cassette $row $column"]
+      set index [SequenceDevice::getPortIndexInCassette $cassette $row $column]
+
+
+      #puts "yangx mount index=$index"
+      # 193+128=322 97+64=161 getPortIndexInCassette function add 64 more on  middle
+      # 128 more on the right cassette. It should be get corrected in that function.
+
+      if {$index > 322 } {
+              set ind [expr $index - 128]
+      } elseif {$index > 161} {
+              set ind [expr $index - 64]
+      } else {
+                set ind $index
+      }
+      set robot_cassette [lreplace $robot_cassette $ind $ind 0]

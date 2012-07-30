@@ -1,0 +1,38 @@
+
+DcsWidgets/CrystalData.tcl
+
+Changes made for mapping index in spreadsheet to index to robot_cassette
+in the proc "generateIndexMap"
+
+The formular " lappend resultList [expr $offset + 16 * $CIndex + $RIndex]"
+      used here for making index map is not corect. The correction is made as follows
+      
+      193+128=322 97+64=161 getPortIndexInCassette function add 64 more on  middle
+      128 more on the right cassette. It should be get corrected in that function.
+
+      
+    if {$isSuperPuckAdaptor} {
+        foreach row $data {
+            set port [lindex $row $port_index]
+            set port_column [string index $port 0]
+            set port_row [string range $port 1 end]
+            set CIndex [lsearch {A B C D E F G H I J K L} $port_column]
+            set RIndex [lsearch {1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16} \
+            $port_row]
+            if {$CIndex < 0 || $RIndex < 0} {
+                lappend resultList -1
+            } else {
+                set ind [expr $offset + 16 * $CIndex + $RIndex]
+                if {$ind > 322 } {
+                        lappend resultList [expr $ind - 128]
+                } elseif {$ind > 161} {
+                        lappend resultList [expr $ind - 64]
+                } else {
+                        lappend resultList $ind
+                }
+		#yangx original       lappend resultList [expr $offset + 16 * $CIndex + $RIndex]
+            }
+        }
+        return $resultList
+    }
+

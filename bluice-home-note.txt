@@ -1,0 +1,78 @@
+In ..dhs/src. The following changes has been made for "homing" and a "script"
+
+	move motorname to home
+	move motorname to #script
+
+(1) Add two messages in the dhs_messages.h
+
+	 "DHS_MESSAGE_MOTOR_START_HOME" 	for homing	 
+         "DHS_MESSAGE_MOTOR_START_SCRIPT"	for any script
+
+
+(2) Add following lines in function of "stoh_start_motor_move" in "dhs_motor_messages.cc"
+The script need to statrt with "#"
+
+        if(strcmp(gToken[2], "home")==0)
+        {
+                MESSAGE_ID = DHS_MESSAGE_MOTOR_START_HOME;
+                LOG_WARNING("yang before home messages sends over");
+        }
+        else if(gToken[2][0] == '#'){
+
+                MESSAGE_ID = DHS_MESSAGE_MOTOR_START_SCRIPT;
+                strcpy(message.script,gToken[2]);
+                LOG_INFO1("message.script=%s \n", message.script);
+                LOG_WARNING("yang galil script messages sends over");
+        }
+
+(3) Add two functions in_dmc2180.cc
+
+	dmc2180_motor_start_home
+	dmc2180_motor_start_script
+
+In "dmc2180_motor_start_home" function, I only specify "home" is 0.0. It's better
+if it include an offset. gToken[3] used as offset can be offset.
+
+The "dmc2180_motor_start_script" is not well tested. 
+
+(4) Add "start_home" function in Dmc2180API.cc
+
+In this function, The home command used is specially for my case. It's not
+generallized. It will need some work to make it for a general case. 
+
+
+
+
+In ..dcss/src the following changes are made for handling "homing"
+
+(1)   In gtos_start_motor_move function in the  dcss_gui_client.c file
+
+	changed 
+			 double newPosition;
+	to 
+			 char   newPosition[201];
+
+	because "home" and "script" are not a double.
+
+
+
+In ..DcsWidgets the following changes are made for "homing" button to work on the staff tab
+
+(1)	In the Device.tcl file
+
+	modefied
+			 DCS::Motor::move 		function
+			 DCS::RealMotor::move 		function
+
+(2)
+	In MotorControlPanel.tcl		
+
+	Add Home button and handleHomeTo function
+
+
+
+
+
+	
+
+

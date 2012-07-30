@@ -1,0 +1,22 @@
+screening-web-spreadsheet
+
+problem:
+
+when click on -screeningtab--->Web---->Spreadsheet
+
+It gose to the browser and had a bad link as follows
+
+http:// dkonk:8080/crystals/CassetteList.html?SMBSessionID=F852BC3770DFE26353A8FBC995303A90&userName=nysbc
+
+If I go direct to the web for the crystal sever. It works and the link as
+follows
+
+https://dkong:8443/crystals/CassetteInfo.jsp?accessID=E0E2B1907A7CB49E22C4F6B306335680&userName=nysbc
+
+Solution: Commented out 2. and uncomment 1 (before 1 is commented out and 2 is
+uncommented)
+
+1. screening.cassetteInfoUrl=https://localhost:8443/crystals/CassetteInfo.jsp
+2. #screening.cassetteInfoUrl=http://localhost:8080/crystals/CassetteList.html
+
+Now it works. 

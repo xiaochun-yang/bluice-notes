@@ -1,0 +1,15 @@
+The default setting for the reuse dark of the snap shot (page 0) in the Collection tab
+is set to "no" before. As requested by John, It's set to "yes" as default.
+
+Modified the file BluIceWidgets/CollectView.tcl
+
+at 
+      itk_component add reuseDark {
+         DCS::Checkbutton $ring.forcedark -text "Use Last Dark"
+        }
+
+add the following lines
+
+	set m_reuseDark 1	
+        $itk_component(reuseDark) setValue $m_reuseDark
+

@@ -1,0 +1,125 @@
+Upgrade bluice from ssrl cvs server
+
+1. go to release-5_1/batchbuild
+2. execute "gmake co"  to update files
+   the updated files should be like the following
+
+U BluIceWidgets/Anneal.tcl
+U BluIceWidgets/BeamSize.tcl
+U BluIceWidgets/BeamlineVideo.tcl
+U BluIceWidgets/BluIce.tcl
+U BluIceWidgets/CollectView.tcl
+U BluIceWidgets/Collimator.tcl
+
+save the names of all the updated files to a file in case needed later. 
+
+
+3  the update process stoped at the following points
+
+a) Had following error 
+	cvs checkout: Updating newmat10/tar
+	? xform/xform.c
+	? xform/xform.h
+	cvs checkout: Updating xform
+	cvs checkout: move away xform/xform.c; it is in the way
+	C xform/xform.c
+	cvs checkout: move away xform/xform.h; it is in the way
+	C xform/xform.h
+	gmake: *** [co_xform] Error 1
+
+
+ 	U dcss/src/dcss_ssl.c
+	cvs checkout: Updating dcss/tmp
+	gmake: *** [co_dcss] Error 1
+
+here is what I did.
+	1. go to xform dir and change xform.c xform.h to xform.c-good and
+		xform.h-good
+	gmake co
+
+	this will upgrade all the following modules
+		xos \
+                logging \
+                xos_cpp \
+                http_cpp \
+                auth \
+                auth_client \
+                jpegsoc \
+                cbf \
+                diffimage \
+                newmat10 \
+                xform \
+                tcl_clibs \
+                dcsconfig \
+                dcsmsg \
+                dali \
+                dcs_tcl_packages \
+                java_dcss_sim \
+                DcsWidgets
+		imperson_cpp \
+                dcss \
+
+	2. I cvs the dcss manually as the following, It seems working. Have no idea
+	 what's wrong.
+	[yangx@yangx ~/release-5_1]$ cvs -d :pserver:ogata@smb.slac.stanford.
+	edu:/home/code/repository co -A dhs (execute it in release-5_1 dir)
+	
+	repeat above command on the following module
+                epicsgw 
+		imgsrv 
+                autochooch 
+                impdhs 
+                blu-ice
+                BluIceWidgets 
+                simdhs 
+                simdetector
+ 
+	In fact, I can update everyone of the modules manually.
+
+4. build bulice --- in batchbuild do the following
+	gmake
+
+	it has a error when build dcss. It's could not find /usr/bin/ld -litcl
+	I made following changes in the makefile under linux in the dcss dir.
+
+	change STD_LIBS += -ltk -ltcl -litcl
+	to     STD_LIBS += -ltk -ltcl /usr/lib/itcl3.3/libitcl3.3.so
+
+	Then it's ok to build entire bluice.
+
+5. The following scripts file has been changed during the upgrade. It include
+	<<<<<<  and ==== symbals in the program and need to manually delete or
+	comment out.
+
+C dcss/scripts/engine/timerService.tcl
+C dcss/scripts/operations/SampleMountingDevice.itcl
+C dcss/scripts/operations/SequenceDevice.tcl
+C dcss/scripts/operations/centerLoop.tcl
+
+C BluIceWidgets/BluIce.tcl
+C BluIceWidgets/HutchView.tcl
+C BluIceWidgets/SamplePositionWidget.tcl
+C BluIceWidgets/StatusBar.tcl
+C DcsWidgets/Video.tcl
+C DcsWidgets/DcsProtocol.tcl
+C dcsconfig/data/default.config
+
+some changes are made in these files.
+
+In StatusBar.tcl 
+
+#yangx    if {$m_ctsState != "Beams"} {
+#        $itk_component(ll) configure \
+        -text "Spear $m_ctsState:" \
+        -foreground red
+#        return
+#    }
+
+    if {$m_ctsState != "Beams"} {
+        $itk_component(ll) configure \
+        -text "Ring Current:" \
+        -foreground red
+        return
+    }
+
+

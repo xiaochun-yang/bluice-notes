@@ -1,0 +1,9 @@
+
+Problem: When user start dcs from at begning (after restart tomcat)
+The dcs window disappeared before user finish typing the password. 
+So there's not enough time for user to input the password.
+
+Solution. Change DCS_MAXRETRY=10
+	  to     DCS_MAXRETRY=20
+
+in the file dcs_functions in the batchbuild.

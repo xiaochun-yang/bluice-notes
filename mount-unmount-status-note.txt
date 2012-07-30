@@ -1,0 +1,36 @@
+
+I add the following lines in the SampleMountingDevice.itcl file for updating 
+the sample mounting and dismount status during the manual mount and dismount
+process. Otherwise it won't work for me. 
+
+
+
+itcl::body SampleMountingDevice::mountCrystal { cassette row column wash_cycle } {
+variable ::nScripts::robot_status
+variable ::nScripts::robot_cassette
+
+	.........
+	.........
+        set robot_status [lreplace $robot_status 15 15 "$cassette $row $column"]
+        set index [SequenceDevice::getPortIndexInCassette $cassette $row $column]
+        if {$index >= 0} {
+                set robot_cassette [lreplace $robot_cassette $index $index 0]
+        }
+	.......
+	.......
+
+
+itcl::body SampleMountingDevice::dismountCrystal { cassette row column } {
+#y    block_all_motors
+variable ::nScripts::robot_status
+variable ::nScripts::robot_cassette
+
+	.......
+	.......
+      set robot_status [lreplace $robot_status 15 15 ""]
+      set index [SequenceDevice::getPortIndexInCassette $cassette $row $column]
+      if {$index >= 0} {
+              set robot_cassette [lreplace $robot_cassette $index $index 1]
+      }
+	.......
+	.......

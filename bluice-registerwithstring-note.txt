@@ -1,0 +1,27 @@
+The following code is from the RobotView.tcl
+
+          #register with the string
+1)        set strObj [$m_deviceFactory createString robot_status]
+2)        $strObj createAttributeFromField status_num 1
+3)        $strObj createAttributeFromField robot_state 7
+4)        $strObj register $this status_num handleStringConfigure
+5)        $strObj register $this robot_state handleBusy
+6)        $strObj register $this status handleStringStatus
+
+
+1) set m_deviceFactory [DCS::DeviceFactory::getObject]
+     
+     make a singleton object "m_deviceFactory"
+     and get the sring robot_status (in the .dat file) contents 
+     and assign to "strObj"
+
+2)   create "status_num" with the first item in the contents of the $strObj?
+3)   create "robot_state" with the 7th item in the contents of the $strObj?
+
+4)   register status_num with the function handleStringConfigure?
+5)   register robot_state with the function handleBusy?
+6)   register status with the function handleStringStatus?
+
+? not sure it's right. need to understand them. 
+
+

@@ -1,0 +1,29 @@
+the following are the setup for running pilatus from ../simdhs directory.
+
+In the .config file, the followings are needed to be added
+
+pilatus.name=detector
+pilatus.host=localhost
+pilatus.port=14242
+pilatus.imageXSizePixels=2462
+pilatus.imageYSizePixels=2526
+pilatus.pixelXSizeUm=172
+pilatus.pixelYSizeUm=172
+pilatus.tmpDir=/home/yangx/temp
+
+
+In the .dat file, It should add
+
+detector
+3
+localhost 2
+
+
+Then you can run as following
+
+./pilatus X4A
+
+
+galil3 is used with pilatus. to start it as the following:
+
+../release-5_1/microdiffraction/linux/dhs X4A galil3

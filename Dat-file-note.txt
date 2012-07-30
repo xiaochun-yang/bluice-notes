@@ -1,0 +1,31 @@
+sil_config
+13
+self standardString
+0 1 1 1 1
+0 1 1 1 1
+1 1 1 1
+
+the first  1 enable add_image		1--yes 0--no
+the second 1 enable analyze_image	1--yes 0--no
+the third  1 enable auto index          1--yes 0--no
+the fouth  1 enable  reorient           1--yes 0--no
+
+
+collect_default
+13
+self collect_default
+1 1 1 1 1
+0 0 0 0 0
+1 3 60 1 120 50 100
+
+the first   number 1   is the default delta?
+the second  number 3   is the default exposure time?
+the third   number 60  is the default attenuation
+the fourth  number 1   is minimum exposure time
+the fifth   number 120 is the max exposure time in the data collection
+the sixth   number 50  is the minimum attenuation
+the seventh number 100 is the maximum attenuation
+
+
+
+

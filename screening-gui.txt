@@ -1,0 +1,27 @@
+The distance, beamstop and attenuation parameters can be displayed
+on the Screening tab.
+
+These 3 parameters should be added in the "screeningPrameters" in the data file
+
+The old one is like 
+
+screeningParameters
+13
+self standardString
+0 1 1 1 1
+0 1 1 1 1
+{{MountNextCrystal {}} {LoopAlignment {}} {Pause {}} {VideoSnapshot {1.000 0deg}} {CollectImage {1.000 2.000 1 {}}} {Rotate 90.000} {VideoSnapshot {1.000 90deg}} {CollectImage {1.000 2.000 1 {}}} {Pause {}} {Rotate -45.000} {VideoSnapshot {1.000 45deg}} {CollectImage {1.000 2.000 1 {}}} {ExcitationScan {10.000 test}} {ReOrient {}} {RunQueueTask {}} {Pause {}}} 0 /data/ana
+
+
+
+The new one is like the following
+
+screeningParameters
+13
+self standardString
+0 1 1 1 1
+0 1 1 1 1
+{{MountNextCrystal {}} {LoopAlignment {}} {Pause {}} {VideoSnapshot {1.000 0deg}} {CollectImage {1.000 2.000 1 {}}} {Rotate 90.000} {VideoSnapshot {1.000 90deg}} {CollectImage {1.000 2.000 1 {}}} {Pause {}} {Rotate -45.000} {VideoSnapshot {1.000 45deg}} {CollectImage {1.000 2.000 1 {}}} {ExcitationScan {10.000 test}} {ReOrient {}} {RunQueueTask {}} {Pause {}}} 0 /data/ana 250.000 44.508 0.000
+
+
+These part of GUI is defined in the file "BluIceWidgets/SequenceActions.tcl"

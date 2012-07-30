@@ -1,0 +1,31 @@
+auto_adxv mode coding.
+
+The XFORMSTATUSFILE is defined in the file /usr/local/ccd_dist/LOGIN_files/log_x4a_api_418 as the following
+
+setenv  XFORMSTATUSFILE /usr/local/ccd_dist/tmp/xf_status
+
+it being sourced in the .cshrc at login
+
+In the file DiffImageViewer.tcl in the BluIceWidgets directory, The following code has been added for manupulate the file index and update current image file names.
+
+#yangx add to same the filename to $XFORMSTATUSFILE for "adxv -automode"
+   global env
+   if [catch {open $env(XFORMSTATUSFILE)} fileID] {
+        puts stderr "Cannot open $XFORMSTATUSFILE: $fileID"
+   } else {
+        set line [split [gets $fileID] " "]
+        set imgNum [expr [lindex $line 0] + 1]
+        close $fileID
+        set fileID [open $env(XFORMSTATUSFILE) w+]
+        puts $fileID "$imgNum $m_fileName"
+        close $fileID
+   }
+}
+
+In order to auto view the image user need to open a window first and them
+input the command  at the prompt as follow:
+
+>adxv -autoload
+
+I did not make adxv in the auto mode in the bluice. Bluice still display the current
+image. It's can be easily make bluice to auto desplay the image but for now just leave the way it's. 

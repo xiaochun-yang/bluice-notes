@@ -1,0 +1,23 @@
+Problem: I add bending and bender_center in the X4A.dump and then did the 
+	following:
+	(1) ./dcss X4A -r ../../dcsconfig/data/X4A.dump
+	(2) ./dcss X4A -s 
+
+	then launched bluice (3) /bluice.tcl X4A
+
+	to my surprised. I could not find these new motions bending and
+	bend_center. (in staff tab, looking for all the motions and motors)
+
+	However, when I use X4A.dat and repeat above. It works. I can see
+	bending and bend_center. 
+
+	More strangely, when I change the gonio_phi position value in the 
+	X4A.dump file and repeat the (1) (2) (3). Bluice displays the new
+	value. somehow it take the new value from the dump file. It can't
+	add new values, but it can update new values. 
+
+Why?   
+
+Conclusion: Use X4A.dat to add or get rid of items (copy X4A.dump to X4A.dat
+	    first to update the X4A.dat) and use X4A.dump to just update the
+	    values.  

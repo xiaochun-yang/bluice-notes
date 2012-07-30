@@ -1,0 +1,46 @@
+In ../BluiceWidgets
+
+-rw-r--r-- 1 yangx yangx  30944 Sep 20 16:27 SimpleRobot.tcl
+-rw-r--r-- 1 yangx yangx  83362 Sep 23 11:28 CassetteView.tcl
+-rw-r--r-- 1 yangx yangx  13062 Sep 27 10:16 ScreeningControl.tcl
+-rw-r--r-- 1 yangx yangx  50542 Sep 28 14:42 SequenceActions.tcl
+-rw-r--r-- 1 yangx yangx  96103 Oct 21 11:32 SequenceCrystals.tcl
+-rw-r--r-- 1 yangx yangx  16432 Oct 21 11:33 megaScreeningView.tcl
+-rwxr-xr-x 1 yangx yangx  75397 Nov 18 12:26 CollectView.tcl
+
+In ../DcsWidgets
+
+-rwxr-xr-x 1 yangx yangx 30866 Aug 11 11:50 AuthClient.tcl
+-rw-r--r-- 1 yangx yangx 43944 Oct 29 11:13 CrystalData.tcl
+
+../dcsconfig/data/
+
+diff both X4A.config   and X4A.dat
+
+../dcss/script/devices
+
+-rw-r-xr-- 1 yangx yangx  1673 Nov 28 15:35 bending_center.tcl
+-rw-r-xr-- 1 yangx yangx  1511 Nov 28 15:42 bending_size.tcl
+
+../dcss/script/operations
+
+-rw-r--r-- 1 yangx yangx   3344 Sep 27 13:54 sequence.tcl
+-rwxr-xr-x 1 yangx yangx  96145 Sep 29 11:24 SampleMountingDevice.itcl
+-rw-r--r-- 1 yangx yangx 174971 Oct 29 11:24 SequenceDevice.tcl
+
+
+
+
+*********************
+(1) Also check imperson setup and add impdhs in the startdcs
+*********************
+(1) need to install the crystal server as well. Follow the /home/yangx/bluice/crystal-server/doc/install.txt (I have a printout with comments on the table)
+*********************
+(2 Also check imperson setup and add impdhs in the startdcs
+*********************
+(3) some small changes on my note book. dark current timing and default dark setting. etc..
+*********************
+ 
+
+
+

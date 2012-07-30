@@ -1,0 +1,1110 @@
+[yangx@yangx batchbuild]$ gmake co
+cvs checkout: Updating xos
+cvs checkout: Updating xos/decunix
+cvs checkout: Updating xos/doc
+cvs checkout: Updating xos/irix
+cvs checkout: Updating xos/linux
+cvs checkout: Updating xos/src
+cvs checkout: Updating xos/win32
+? logging/linux
+cvs checkout: Updating logging
+cvs checkout: Updating logging/doc
+cvs checkout: Updating logging/nt
+cvs checkout: Updating logging/nt/test
+cvs checkout: Updating logging/src
+U logging/src/log_quick.c
+U logging/src/log_quick.h
+cvs checkout: Updating logging/test
+? xos_cpp/linux
+cvs checkout: Updating xos_cpp
+U xos_cpp/makefile
+cvs checkout: Updating xos_cpp/doc
+cvs checkout: Updating xos_cpp/src
+U xos_cpp/src/TclList.cxx
+U xos_cpp/src/TclList.h
+U xos_cpp/src/XOSSingleLock.cxx
+U xos_cpp/src/XOSSingleLock.h
+U xos_cpp/src/XosException.cxx
+U xos_cpp/src/XosFileUtil.cxx
+U xos_cpp/src/XosSecureString.h
+U xos_cpp/src/XosStringUtil.cxx
+U xos_cpp/src/XosStringUtil.h
+? http_cpp/linux/http_client
+? http_cpp/linux/rawsocketclient_test
+cvs checkout: Updating http_cpp
+cvs checkout: Updating http_cpp/doc
+cvs checkout: Updating http_cpp/linux
+cvs checkout: Updating http_cpp/src
+U http_cpp/src/HttpClientImp.cxx
+U http_cpp/src/HttpUtil.cxx
+U http_cpp/src/SSLCommon.cxx
+U http_cpp/src/SSLCommon.h
+cvs checkout: Updating http_cpp/test
+cvs checkout: Updating http_cpp/test/testClient
+cvs checkout: Updating http_cpp/test/testServer
+cvs checkout: Updating auth
+cvs checkout: Updating auth/decunix
+cvs checkout: Updating auth/irix
+cvs checkout: Updating auth/linux
+cvs checkout: Updating auth/src
+? auth_client/linux
+cvs checkout: Updating auth_client
+cvs checkout: Updating auth_client/doc
+cvs checkout: Updating auth_client/src
+cvs checkout: Updating auth_client/tcl
+cvs checkout: Updating auth_client/test
+cvs checkout: Updating jpegsoc
+cvs checkout: Updating jpegsoc/decunix
+cvs checkout: Updating jpegsoc/irix
+cvs checkout: Updating jpegsoc/linux
+cvs checkout: Updating jpegsoc/src
+? cbf/bin/linux/cif2cbf
+? cbf/bin/linux/convert_image
+? cbf/bin/linux/img2cif
+? cbf/bin/linux/makecbf
+cvs checkout: Updating cbf
+cvs checkout: Updating cbf/bin
+cvs checkout: Updating cbf/bin/decunix
+cvs checkout: Updating cbf/bin/irix
+cvs checkout: Updating cbf/bin/linux
+cvs checkout: Updating cbf/doc
+cvs checkout: Updating cbf/examples
+cvs checkout: Updating cbf/html_graphics
+cvs checkout: Updating cbf/include
+cvs checkout: Updating cbf/lib
+cvs checkout: Updating cbf/lib/decunix
+cvs checkout: Updating cbf/lib/irix
+cvs checkout: Updating cbf/lib/linux
+cvs checkout: Updating cbf/src
+? diffimage/linux/getImgHeader
+cvs checkout: Updating diffimage
+RCS file: /home/code/repository/diffimage/makefile,v
+retrieving revision 1.22
+retrieving revision 1.28
+Merging differences between 1.22 and 1.28 into makefile
+M diffimage/makefile
+cvs checkout: Updating diffimage/decunix
+cvs checkout: Updating diffimage/irix
+cvs checkout: Updating diffimage/linux
+cvs checkout: Updating diffimage/src
+U diffimage/src/LabelitMarkup.h
+U diffimage/src/write_png.cpp
+cvs checkout: Updating diffimage/src/scitbx
+? newmat10/linux
+cvs checkout: Updating newmat10
+cvs checkout: Updating newmat10/src
+cvs checkout: Updating newmat10/tar
+? xform/xform.c-good
+? xform/xform.h-good
+cvs checkout: Updating xform
+U xform/xform.c
+U xform/xform.h
+cvs checkout: Updating tcl_clibs
+U tcl_clibs/makefile
+cvs checkout: Updating tcl_clibs/decunix
+cvs checkout: Updating tcl_clibs/irix
+cvs checkout: Updating tcl_clibs/linux
+cvs checkout: Updating tcl_clibs/src
+U tcl_clibs/src/dcs_message_parse.cc
+U tcl_clibs/src/fitFunction.cpp
+U tcl_clibs/src/fitFunction.h
+U tcl_clibs/src/ice.c
+U tcl_clibs/src/imageBackgroundDetect.cc
+U tcl_clibs/src/imageBackgroundDetect.h
+U tcl_clibs/src/imagePGM16.cc
+U tcl_clibs/src/imagePGM16.h
+U tcl_clibs/src/imageScale.cc
+U tcl_clibs/src/linearRegression.cpp
+U tcl_clibs/src/linearRegression.h
+U tcl_clibs/src/matrix.cc
+U tcl_clibs/src/matrix.h
+U tcl_clibs/src/matrix_cmd.cc
+U tcl_clibs/src/putsToLog.c
+U tcl_clibs/src/putsToLog.h
+? dcsconfig/linux
+? dcsconfig/data/BL-sim.dat-modified
+? dcsconfig/data/X4A
+? dcsconfig/data/X4A-2galil.config
+? dcsconfig/data/X4A-2galil.dat
+? dcsconfig/data/X4A-galil1.config
+? dcsconfig/data/X4A.config
+? dcsconfig/data/X4A.config-10
+? dcsconfig/data/X4A.config-11-15-2011
+? dcsconfig/data/X4A.config-9
+? dcsconfig/data/X4A.config-before-videosystem2
+? dcsconfig/data/X4A.config-dkong-dcs-ori
+? dcsconfig/data/X4A.config-epics-motors
+? dcsconfig/data/X4A.config-explain
+? dcsconfig/data/X4A.config-halfslit
+? dcsconfig/data/X4A.config-home
+? dcsconfig/data/X4A.config-no-epics-motors
+? dcsconfig/data/X4A.config-simu
+? dcsconfig/data/X4A.config-video
+? dcsconfig/data/X4A.config-video-galil1
+? dcsconfig/data/X4A.crt-OLD
+? dcsconfig/data/X4A.dat
+? dcsconfig/data/X4A.dat-1
+? dcsconfig/data/X4A.dat-10
+? dcsconfig/data/X4A.dat-11-15-2011
+? dcsconfig/data/X4A.dat-3
+? dcsconfig/data/X4A.dat-4
+? dcsconfig/data/X4A.dat-5
+? dcsconfig/data/X4A.dat-6
+? dcsconfig/data/X4A.dat-7
+? dcsconfig/data/X4A.dat-8
+? dcsconfig/data/X4A.dat-9
+? dcsconfig/data/X4A.dat-X4A.config-video-galil1-3
+? dcsconfig/data/X4A.dat-bad
+? dcsconfig/data/X4A.dat-dkong-dcs-ori
+? dcsconfig/data/X4A.dat-halfslit
+? dcsconfig/data/X4A.dat-new
+? dcsconfig/data/X4A.dat-sav5
+? dcsconfig/data/X4A.dat-yangx
+? dcsconfig/data/X4A.dump
+? dcsconfig/data/X4A.dump-1
+? dcsconfig/data/X4A.dump-11-15-2011
+? dcsconfig/data/X4A.dump-2
+? dcsconfig/data/X4A.dump-3
+? dcsconfig/data/X4A_dcss_log_0_0.log
+? dcsconfig/data/X4A_dcss_log_1_0.log
+? dcsconfig/data/X4_simple1.config
+? dcsconfig/data/X4_simple1.config-detector
+? dcsconfig/data/X4_simple1.config-simu
+? dcsconfig/data/X4_simple1.crt
+? dcsconfig/data/X4_simple1.dat
+? dcsconfig/data/X4_simple1.dat-2
+? dcsconfig/data/X4_simple1.dat-detector
+? dcsconfig/data/X4_simple1.dat-simu
+? dcsconfig/data/X4_simple1.koala
+? dcsconfig/data/default.config-current
+? dcsconfig/data/default.config-koala
+? dcsconfig/data/default.config-localhost
+? dcsconfig/data/default.config-toonew
+? dcsconfig/data/default.config-toonew1
+? dcsconfig/data/default.config-yang
+? dcsconfig/data/dump
+? dcsconfig/data/new
+? dcsconfig/data/readme.yangx
+? dcsconfig/data/server-jsse.crt-OLD
+? dcsconfig/data/server-jsse.crt-koala
+cvs checkout: Updating dcsconfig
+cvs checkout: Updating dcsconfig/data
+U dcsconfig/data/BL-sim.config
+U dcsconfig/data/BL-sim.dat
+U dcsconfig/data/BL0-0.config
+U dcsconfig/data/BL1-5.config
+U dcsconfig/data/BL1-5.dat
+U dcsconfig/data/BL11-1.config
+U dcsconfig/data/BL11-1.dat
+U dcsconfig/data/BL11-3.config
+U dcsconfig/data/BL12-2.config
+U dcsconfig/data/BL12-2.dat
+U dcsconfig/data/BL14-1.config
+U dcsconfig/data/BL14-1.dat
+U dcsconfig/data/BL7-1.config
+U dcsconfig/data/BL7-1.dat
+U dcsconfig/data/BL9-1.config
+U dcsconfig/data/BL9-1.dat
+U dcsconfig/data/BL9-2.config
+U dcsconfig/data/BL9-2.dat
+U dcsconfig/data/BL9-3.config
+U dcsconfig/data/SIM1-5.config
+U dcsconfig/data/SIM11-1.config
+U dcsconfig/data/SIM11-1.dat
+U dcsconfig/data/SIM11-3.config
+U dcsconfig/data/SIM12-2.config
+U dcsconfig/data/SIM12-2.dat
+U dcsconfig/data/SIM7-1.config
+U dcsconfig/data/SIM7-1.dat
+RCS file: /home/code/repository/dcsconfig/data/SIM9-1.config,v
+retrieving revision 1.22
+retrieving revision 1.24
+Merging differences between 1.22 and 1.24 into SIM9-1.config
+M dcsconfig/data/SIM9-1.config
+U dcsconfig/data/SIM9-1.dat
+U dcsconfig/data/SIM9-2.config
+U dcsconfig/data/SIM9-2.dat
+U dcsconfig/data/SMBLX4.config
+RCS file: /home/code/repository/dcsconfig/data/default.config,v
+retrieving revision 1.139
+retrieving revision 1.175
+Merging differences between 1.139 and 1.175 into default.config
+rcsmerge: warning: conflicts during merge
+cvs checkout: conflicts found in dcsconfig/data/default.config
+C dcsconfig/data/default.config
+U dcsconfig/data/server.crt
+cvs checkout: Updating dcsconfig/data/BL12-2
+U dcsconfig/data/BL12-2/preamp_h.txt
+U dcsconfig/data/BL12-2/preamp_v.txt
+cvs checkout: Updating dcsconfig/doc
+cvs checkout: Updating dcsconfig/examples
+cvs checkout: Updating dcsconfig/src
+cvs checkout: Updating dcsconfig/tables
+cvs checkout: Updating dcsconfig/tables/BL-sim
+cvs checkout: Updating dcsconfig/tables/BL11-1
+cvs checkout: Updating dcsconfig/tables/BL12-2
+U dcsconfig/tables/BL12-2/flux_10x10
+U dcsconfig/tables/BL12-2/flux_20x20
+U dcsconfig/tables/BL12-2/flux_7x7
+cvs checkout: Updating dcsconfig/tables/BL14-1
+cvs checkout: Updating dcsconfig/tables/BL7-1
+cvs checkout: Updating dcsconfig/tables/BL9-1
+cvs checkout: Updating dcsconfig/tables/BL9-2
+cvs checkout: Updating dcsconfig/tables/SIM12-2
+U dcsconfig/tables/SIM12-2/flux.dat
+U dcsconfig/tables/SIM12-2/flux_10x10
+U dcsconfig/tables/SIM12-2/flux_20x20
+U dcsconfig/tables/SIM12-2/flux_7x7
+U dcsconfig/tables/SIM12-2/flux_gshield
+cvs checkout: Updating dcsconfig/tcl
+? dcsmsg/linux
+? dcsmsg/src/RobotSystem.cxx-ori
+cvs checkout: Updating dcsmsg
+U dcsmsg/dcsmsg.vcproj
+cvs checkout: Updating dcsmsg/src
+U dcsmsg/src/DcsMessage.cxx
+U dcsmsg/src/DcsMessage.h
+U dcsmsg/src/DcsMessageHandler.cxx
+U dcsmsg/src/DcsMessageHandler.h
+U dcsmsg/src/DcsMessageManager.cxx
+U dcsmsg/src/DcsMessageManager.h
+U dcsmsg/src/DhsService.cxx
+U dcsmsg/src/DhsService.h
+U dcsmsg/src/DhsSystem4Windows.cxx
+U dcsmsg/src/DhsSystem4Windows.h
+U dcsmsg/src/NTService.cpp
+U dcsmsg/src/NTService.h
+U dcsmsg/src/Registry.cpp
+U dcsmsg/src/Registry.h
+M dcsmsg/src/RobotSystem.cxx
+U dcsmsg/src/stdafx.h
+cvs checkout: Updating dcsmsg/unit_test
+? dali/packages/amap/obj
+? dali/packages/basic/obj
+? dali/packages/bytegeom/obj
+? dali/packages/color/obj
+? dali/packages/gif/obj
+? dali/packages/imap/obj
+? dali/packages/jpeg/obj
+? dali/packages/kernel/obj
+? dali/packages/mpeg/obj
+? dali/packages/pnm/obj
+? dali/packages/vision/obj
+? dali/packages/wave/obj
+? dali/unix/lib
+? dali/unix/obj
+cvs checkout: Updating dali
+cvs checkout: Updating dali/include
+cvs checkout: Updating dali/linux
+cvs checkout: Updating dali/packages
+cvs checkout: Updating dali/packages/amap
+cvs checkout: Updating dali/packages/amap/tcl
+cvs checkout: Updating dali/packages/avi
+cvs checkout: Updating dali/packages/avi/tcl
+cvs checkout: Updating dali/packages/basic
+cvs checkout: Updating dali/packages/basic/tcl
+cvs checkout: Updating dali/packages/bytegeom
+cvs checkout: Updating dali/packages/bytegeom/tcl
+cvs checkout: Updating dali/packages/color
+cvs checkout: Updating dali/packages/color/tcl
+cvs checkout: Updating dali/packages/display
+cvs checkout: Updating dali/packages/gif
+cvs checkout: Updating dali/packages/imap
+cvs checkout: Updating dali/packages/jpeg
+cvs checkout: Updating dali/packages/kernel
+cvs checkout: Updating dali/packages/mpeg
+cvs checkout: Updating dali/packages/pnm
+cvs checkout: Updating dali/packages/template
+cvs checkout: Updating dali/packages/vision
+cvs checkout: Updating dali/packages/wave
+cvs checkout: Updating dali/tar
+cvs checkout: Updating dali/unix
+cvs checkout: Updating dcs_tcl_packages
+cvs checkout: Updating java_dcss_sim
+? DcsWidgets/Config.tcl-1
+? DcsWidgets/Config.tcl-ori
+? DcsWidgets/CrystalData.tcl-2
+? DcsWidgets/CrystalData.tcl-ori
+? DcsWidgets/DcsProtocol.tcl-ori
+? DcsWidgets/LVDTForBL122.tcl-ori
+? DcsWidgets/RunDefinition.tcl-ori
+? DcsWidgets/RunField.tcl-ori
+? DcsWidgets/RunSequenceCalculator.tcl-new
+cvs checkout: Updating DcsWidgets
+M DcsWidgets/AuthClient.tcl
+U DcsWidgets/BarcodeMap.tcl
+U DcsWidgets/BluIceShell.tcl
+U DcsWidgets/Button.tcl
+U DcsWidgets/CassetteOwner.tcl
+U DcsWidgets/Checkbox.tcl
+U DcsWidgets/Checkbutton.tcl
+U DcsWidgets/ClientList.tcl
+U DcsWidgets/CollimatorMenu.tcl
+U DcsWidgets/CollimatorPreset.tcl
+U DcsWidgets/ComponentGateExtension.tcl
+RCS file: /home/code/repository/DcsWidgets/Config.tcl,v
+retrieving revision 1.78
+retrieving revision 1.81
+Merging differences between 1.78 and 1.81 into Config.tcl
+M DcsWidgets/Config.tcl
+U DcsWidgets/Contour.tcl
+RCS file: /home/code/repository/DcsWidgets/CrystalData.tcl,v
+retrieving revision 1.94
+retrieving revision 1.99
+Merging differences between 1.94 and 1.99 into CrystalData.tcl
+M DcsWidgets/CrystalData.tcl
+RCS file: /home/code/repository/DcsWidgets/DcsProtocol.tcl,v
+retrieving revision 1.83
+retrieving revision 1.93
+Merging differences between 1.83 and 1.93 into DcsProtocol.tcl
+rcsmerge: warning: conflicts during merge
+cvs checkout: conflicts found in DcsWidgets/DcsProtocol.tcl
+C DcsWidgets/DcsProtocol.tcl
+U DcsWidgets/Detector.tcl
+RCS file: /home/code/repository/DcsWidgets/Device.tcl,v
+retrieving revision 1.40
+retrieving revision 1.45
+Merging differences between 1.40 and 1.45 into Device.tcl
+M DcsWidgets/Device.tcl
+U DcsWidgets/DeviceFactory.tcl
+U DcsWidgets/DeviceLog.tcl
+RCS file: /home/code/repository/DcsWidgets/DeviceView.tcl,v
+retrieving revision 1.58
+retrieving revision 1.80
+Merging differences between 1.58 and 1.80 into DeviceView.tcl
+M DcsWidgets/DeviceView.tcl
+U DcsWidgets/Entry.tcl
+U DcsWidgets/Entryfield.tcl
+U DcsWidgets/HardwareManager.tcl
+U DcsWidgets/IPanedwindow.itk
+U DcsWidgets/Imperson.tcl
+M DcsWidgets/LVDTForBL122.tcl
+U DcsWidgets/LogView.tcl
+RCS file: /home/code/repository/DcsWidgets/MenuButton.tcl,v
+retrieving revision 1.10
+retrieving revision 1.11
+Merging differences between 1.10 and 1.11 into MenuButton.tcl
+M DcsWidgets/MenuButton.tcl
+U DcsWidgets/MotorButton.tcl
+M DcsWidgets/MotorControlPanel.tcl
+U DcsWidgets/MotorTargetList.tcl
+U DcsWidgets/OperationManager.tcl
+U DcsWidgets/PeriodicTable.tcl
+U DcsWidgets/Radiobox.tcl
+U DcsWidgets/Raster.tcl
+U DcsWidgets/Raster4BluIce.tcl
+U DcsWidgets/RasterBase.tcl
+U DcsWidgets/RobotStatus.tcl
+U DcsWidgets/RunDefinition.tcl
+U DcsWidgets/RunSequenceCalculator.tcl
+U DcsWidgets/ScreeningParameters.tcl
+U DcsWidgets/ScriptCommand.tcl
+U DcsWidgets/ScrolledFrame.tcl
+U DcsWidgets/StrategyStatus.tcl
+U DcsWidgets/String.tcl
+U DcsWidgets/StringView.tcl
+U DcsWidgets/UserAlignBeamStatus.tcl
+U DcsWidgets/Util.tcl
+RCS file: /home/code/repository/DcsWidgets/Video.tcl,v
+retrieving revision 1.49
+retrieving revision 1.58
+Merging differences between 1.49 and 1.58 into Video.tcl
+rcsmerge: warning: conflicts during merge
+cvs checkout: conflicts found in DcsWidgets/Video.tcl
+C DcsWidgets/Video.tcl
+U DcsWidgets/pkgIndex.tcl
+? imperson_cpp/linux
+? imperson_cpp/test.result
+? imperson_cpp/test/out1.txt
+cvs checkout: Updating imperson_cpp
+M imperson_cpp/test.csh
+cvs checkout: Updating imperson_cpp/doc
+cvs checkout: Updating imperson_cpp/java_test
+cvs checkout: Updating imperson_cpp/src
+U imperson_cpp/src/ImpFileAccess.cxx
+U imperson_cpp/src/ImpFileAccess.h
+U imperson_cpp/src/ImpRunScript.cxx
+U imperson_cpp/src/ImpServer.cxx
+U imperson_cpp/src/ImpServer.h
+U imperson_cpp/src/ImpWriteFile.cxx
+U imperson_cpp/src/ImpWriteFiles.cxx
+cvs checkout: Updating imperson_cpp/test
+U imperson_cpp/test/TestWriteFilesSlowly.java
+U imperson_cpp/test/writeFile.http
+U imperson_cpp/test/writeFiles.http
+cvs checkout: Updating imperson_cpp/test/child_of_test
+? dcss/.pki
+? dcss/dbmapfile/X4A.dat
+? dcss/dbmapfile/X4A.dump
+? dcss/dbmapfile/X4_simple1.dat
+? dcss/linux/X4A
+? dcss/linux/X4A_dcss_log_0_0.log
+? dcss/linux/X4A_dcss_log_10_0.log
+? dcss/linux/X4A_dcss_log_11_0.log
+? dcss/linux/X4A_dcss_log_12_0.log
+? dcss/linux/X4A_dcss_log_13_0.log
+? dcss/linux/X4A_dcss_log_14_0.log
+? dcss/linux/X4A_dcss_log_15_0.log
+? dcss/linux/X4A_dcss_log_16_0.log
+? dcss/linux/X4A_dcss_log_17_0.log
+? dcss/linux/X4A_dcss_log_18_0.log
+? dcss/linux/X4A_dcss_log_19_0.log
+? dcss/linux/X4A_dcss_log_1_0.log
+? dcss/linux/X4A_dcss_log_2_0.log
+? dcss/linux/X4A_dcss_log_3_0.log
+? dcss/linux/X4A_dcss_log_4_0.log
+? dcss/linux/X4A_dcss_log_5_0.log
+? dcss/linux/X4A_dcss_log_6_0.log
+? dcss/linux/X4A_dcss_log_7_0.log
+? dcss/linux/X4A_dcss_log_8_0.log
+? dcss/linux/X4A_dcss_log_9_0.log
+? dcss/linux/X4A_restart_dump2011-11-30-16:25:51
+? dcss/linux/X4A_restart_dump2011-11-30-16:34:16
+? dcss/linux/X4A_restart_dump2011-12-02-14:46:57
+? dcss/linux/X4A_restart_dump2011-12-02-14:55:50
+? dcss/linux/X4A_restart_dump2011-12-02-15:59:58
+? dcss/linux/X4A_restart_dump2011-12-02-16:15:39
+? dcss/linux/X4A_restart_dump2011-12-02-16:18:59
+? dcss/linux/X4A_restart_dump2011-12-05-10:57:41
+? dcss/linux/X4A_restart_dump2011-12-30-13:28:52
+? dcss/linux/X4A_restart_dump2011-12-30-15:41:39
+? dcss/linux/X4A_restart_dump2011-12-30-16:09:36
+? dcss/linux/X4A_restart_dump2011-12-30-16:25:38
+? dcss/linux/X4A_restart_dump2011-12-30-16:35:43
+? dcss/linux/X4A_restart_dump2011-12-30-16:41:49
+? dcss/linux/X4A_restart_dump2012-01-03-10:02:17
+? dcss/linux/X4A_restart_dump2012-01-03-10:10:25
+? dcss/linux/X4A_restart_dump2012-01-03-10:14:59
+? dcss/linux/X4A_restart_dump2012-01-03-10:19:58
+? dcss/linux/X4A_restart_dump2012-01-03-11:02:04
+? dcss/linux/X4A_restart_dump2012-01-03-11:08:49
+? dcss/linux/X4A_restart_dump2012-01-03-11:14:43
+? dcss/linux/X4A_restart_dump2012-01-03-12:59:37
+? dcss/linux/X4A_restart_dump2012-01-03-13:01:54
+? dcss/linux/X4A_restart_dump2012-01-03-13:04:38
+? dcss/linux/X4A_restart_dump2012-01-05-16:38:56
+? dcss/linux/X4A_restart_dump2012-01-06-10:21:18
+? dcss/linux/X4A_restart_dump2012-01-06-10:24:09
+? dcss/linux/X4A_restart_dump2012-01-06-14:34:15
+? dcss/linux/X4A_restart_dump2012-01-09-10:26:24
+? dcss/linux/X4A_restart_dump2012-01-11-13:48:40
+? dcss/linux/X4A_restart_dump2012-01-11-14:57:38
+? dcss/linux/X4A_restart_dump2012-01-11-14:58:31
+? dcss/linux/X4A_restart_dump2012-01-12-10:03:23
+? dcss/linux/X4A_restart_dump2012-01-17-13:08:09
+? dcss/linux/X4A_restart_dump2012-01-17-13:12:30
+? dcss/linux/X4A_restart_dump2012-01-19-16:56:59
+? dcss/linux/X4A_restart_dump2012-01-30-15:28:21
+? dcss/linux/X4A_restart_dump2012-02-02-10:07:34
+? dcss/linux/X4A_restart_dump2012-02-02-10:41:59
+? dcss/linux/X4A_restart_dump2012-02-02-10:58:46
+? dcss/linux/X4A_restart_dump2012-02-02-11:03:35
+? dcss/linux/X4A_restart_dump2012-02-02-11:20:30
+? dcss/linux/X4A_restart_dump2012-02-02-13:28:47
+? dcss/linux/X4A_restart_dump2012-02-02-13:31:20
+? dcss/linux/X4A_restart_dump2012-02-02-13:40:17
+? dcss/linux/X4A_restart_dump2012-02-02-13:55:55
+? dcss/linux/X4A_restart_dump2012-02-02-14:19:05
+? dcss/linux/X4A_restart_dump2012-02-02-15:16:16
+? dcss/linux/X4A_restart_dump2012-02-02-15:20:10
+? dcss/linux/X4A_restart_dump2012-02-02-15:22:55
+? dcss/linux/X4A_restart_dump2012-02-02-15:27:27
+? dcss/linux/X4A_restart_dump2012-02-02-15:48:52
+? dcss/linux/X4A_restart_dump2012-02-02-16:35:34
+? dcss/linux/X4A_restart_dump2012-02-02-16:45:16
+? dcss/linux/X4A_restart_dump2012-02-03-10:41:09
+? dcss/linux/X4A_restart_dump2012-02-03-12:30:44
+? dcss/linux/X4A_restart_dump2012-02-03-12:39:12
+? dcss/linux/X4A_restart_dump2012-02-03-13:39:11
+? dcss/linux/X4A_restart_dump2012-02-03-13:42:05
+? dcss/linux/X4A_restart_dump2012-02-03-13:45:28
+? dcss/linux/X4A_restart_dump2012-02-03-13:47:13
+? dcss/linux/X4A_restart_dump2012-02-03-14:52:24
+? dcss/linux/X4A_restart_dump2012-02-03-14:54:38
+? dcss/linux/X4A_restart_dump2012-03-15-14:46:52
+? dcss/linux/dcss
+? dcss/linux/dump20111130162657-2982095760
+? dcss/linux/dump20111130163623-2928171920
+? dcss/linux/dump20111202145108-2948590480
+? dcss/linux/dump20111202152400-2918169488
+? dcss/linux/dump20111202161430-2907679632
+? dcss/linux/dump20111202161754-2949639056
+? dcss/linux/dump20111205105423-2913975184
+? dcss/linux/dump20111206133935-2945444752
+? dcss/linux/dump20111230154121-2918173584
+? dcss/linux/dump20111230160917-2918730640
+? dcss/linux/dump20111230162124-2917682064
+? dcss/linux/dump20111230162952-2982161296
+? dcss/linux/dump20111230163922-2907679632
+? dcss/linux/dump20120103095948-2950200208
+? dcss/linux/dump20120103100357-2918169488
+? dcss/linux/dump20120103101119-2916072336
+? dcss/linux/dump20120103101941-2949634960
+? dcss/linux/dump20120103110139-2913975184
+? dcss/linux/dump20120103110805-2958031760
+? dcss/linux/dump20120103111136-2960128912
+? dcss/linux/dump20120103114114-2918652816
+? dcss/linux/dump20120103125950-2905586576
+? dcss/linux/dump20120103130312-2918169488
+? dcss/linux/dump20120104130008-2972240784
+? dcss/linux/dump20120105163948-2907679632
+? dcss/linux/dump20120106102152-2895100816
+? dcss/linux/dump20120106102425-2907679632
+? dcss/linux/dump20120110095258-2947546000
+? dcss/linux/dump20120111145404-3062623120
+? dcss/linux/dump20120111145928-2918730640
+? dcss/linux/dump20120117114858-2959076240
+? dcss/linux/dump20120117131044-2905586576
+? dcss/linux/dump20120119165552-2906635152
+? dcss/linux/dump20120130152650-2905586576
+? dcss/linux/dump20120202100141-2907683728
+? dcss/linux/dump20120202104129-2939157392
+? dcss/linux/dump20120202104503-2918730640
+? dcss/linux/dump20120202110323-2971696016
+? dcss/linux/dump20120202112011-2928663440
+? dcss/linux/dump20120202132537-2909096848
+? dcss/linux/dump20120202133109-2961644432
+? dcss/linux/dump20120202134004-2928663440
+? dcss/linux/dump20120202135251-2928667536
+? dcss/linux/dump20120202141844-2922376080
+? dcss/linux/dump20120202142243-2897750928
+? dcss/linux/dump20120202151844-2907192208
+? dcss/linux/dump20120202152238-2922376080
+? dcss/linux/dump20120202152400-2895100816
+? dcss/linux/dump20120202154645-2893003664
+? dcss/linux/dump20120202163517-2971999120
+? dcss/linux/dump20120202164504-2895100816
+? dcss/linux/dump20120202164756-2906643344
+? dcss/linux/dump20120203123026-2886712208
+? dcss/linux/dump20120203123355-2918165392
+? dcss/linux/dump20120203124211-2905586576
+? dcss/linux/dump20120203134143-2907700112
+? dcss/linux/dump20120203134503-2905586576
+? dcss/linux/dump20120203134607-2961599376
+? dcss/linux/dump20120203144855-2907192208
+? dcss/linux/dump20120203145411-2893003664
+? dcss/linux/dump20120203150653-2961980304
+? dcss/linux/dump20120315170332-2972175248
+? dcss/linux/gtos_configure_device.log
+? dcss/linux/url.class
+? dcss/scripts/devices/beam_height.tcl
+? dcss/scripts/devices/beam_size_x.tcl-ori
+? dcss/scripts/devices/beam_size_y.tcl-ori
+? dcss/scripts/devices/beam_width.tcl
+? dcss/scripts/devices/bending_center.tcl
+? dcss/scripts/devices/bending_center.tcl-1
+? dcss/scripts/devices/bending_size.tcl
+? dcss/scripts/devices/bending_size.tcl-1
+? dcss/scripts/devices/sample_x.tcl
+? dcss/scripts/devices/sample_x.tcl-1direction
+? dcss/scripts/devices/sample_x.tcl-omega
+? dcss/scripts/devices/sample_y.tcl
+? dcss/scripts/devices/sample_y.tcl-1direction
+? dcss/scripts/devices/sample_y.tcl-omega
+? dcss/scripts/devices/sample_z.tcl
+? dcss/scripts/devices/sample_z.tcl-1direction
+? dcss/scripts/devices/sample_z.tcl-omega
+? dcss/scripts/devices/samples
+? dcss/scripts/engine/hardware_commands.tcl-ori
+? dcss/scripts/engine/scriptingEngine.tcl-1
+? dcss/scripts/operations/RMS.tcl
+? dcss/scripts/operations/SampleMountingDevice.itcl-1
+? dcss/scripts/operations/SampleMountingDevice.itcl-2
+? dcss/scripts/operations/SampleMountingDevice.itcl-new
+? dcss/scripts/operations/SampleMountingDevice.itcl-problem
+? dcss/scripts/operations/SequenceDevice.tcl-1
+? dcss/scripts/operations/SequenceDevice.tcl-2
+? dcss/scripts/operations/SequenceDevice.tcl-3
+? dcss/scripts/operations/SequenceDevice.tcl-4
+? dcss/scripts/operations/SequenceDevice.tcl-notsure
+? dcss/scripts/operations/SequenceDevice.tcl-sav-1
+? dcss/scripts/operations/SequenceDevice.tcl-test
+? dcss/scripts/operations/centerLoop.tcl-ori
+? dcss/scripts/operations/collectFrame.tcl-ori
+? dcss/scripts/operations/collectRun.tcl-ori
+? dcss/scripts/operations/collectRuns.tcl-ori
+? dcss/scripts/operations/ion_chamber0_op.tcl
+? dcss/scripts/operations/ion_chamber1_op.tcl
+? dcss/scripts/operations/ion_chamber2_op.tcl
+? dcss/scripts/operations/ion_chamber3_op.tcl
+? dcss/scripts/operations/ion_chamber4_op.tcl
+? dcss/scripts/operations/ion_chamber_op.tcl
+? dcss/scripts/operations/moveToNewEnergy.tcl
+? dcss/scripts/operations/normalize.tcl-open
+? dcss/scripts/operations/normalize.tcl-open-to-1
+? dcss/scripts/operations/normalize.tcl-ori
+? dcss/scripts/operations/runTimer.tcl
+? dcss/scripts/operations/sequence.tcl-notsure
+? dcss/scripts/operations/sequenceManual.tcl-ori
+? dcss/scripts/operations/xraySampleSearch.tcl-ori
+? dcss/scripts/strings/runDefinition.tcl-new
+? dcss/src/dcss_client.c-ori
+? dcss/src/dcss_client.h-ori
+? dcss/src/dcss_gui_client.c-ori
+? dcss/tmp/README.txt-good
+cvs checkout: Updating dcss
+U dcss/makefile
+cvs checkout: Updating dcss/dbmapfile
+cvs checkout: Updating dcss/decunix
+cvs checkout: Updating dcss/examples
+cvs checkout: Updating dcss/examples/MAD
+U dcss/examples/MAD/Gd-L1.bip
+U dcss/examples/MAD/default.bip
+cvs checkout: Updating dcss/linux
+cvs checkout: Updating dcss/scripts
+cvs checkout: Updating dcss/scripts/devices
+U dcss/scripts/devices/ENCODER_MOTOR.tcl
+U dcss/scripts/devices/SCAN2D_HORZ.tcl
+U dcss/scripts/devices/SCAN2D_VERT.tcl
+U dcss/scripts/devices/STRING_DISPLAY_MOTOR.tcl
+U dcss/scripts/devices/beam_size_sample_x_bl122.tcl
+U dcss/scripts/devices/beam_size_sample_x_dummy.tcl
+U dcss/scripts/devices/beam_size_sample_y_bl122.tcl
+U dcss/scripts/devices/beam_size_sample_y_dummy.tcl
+M dcss/scripts/devices/beam_size_x.tcl
+M dcss/scripts/devices/beam_size_y.tcl
+U dcss/scripts/devices/beamstop_z_auto.tcl
+U dcss/scripts/devices/detector_z_corr.tcl
+U dcss/scripts/devices/detector_z_corr_BL12-2.tcl
+U dcss/scripts/devices/energy_bl11.tcl
+U dcss/scripts/devices/energy_bl122.tcl
+U dcss/scripts/devices/energy_bl15.tcl
+U dcss/scripts/devices/energy_bl71.tcl
+U dcss/scripts/devices/energy_bl91.tcl
+U dcss/scripts/devices/energy_bl92.tcl
+U dcss/scripts/devices/flux_collimator.tcl
+U dcss/scripts/devices/mirror_horz_combo.tcl
+U dcss/scripts/devices/optimized_energy.tcl
+U dcss/scripts/devices/undulator_gap.tcl
+cvs checkout: Updating dcss/scripts/engine
+U dcss/scripts/engine/hardware_commands.tcl
+U dcss/scripts/engine/message_handlers.tcl
+U dcss/scripts/engine/motor_control.tcl
+RCS file: /home/code/repository/dcss/scripts/engine/scriptingEngine.tcl,v
+retrieving revision 1.48
+retrieving revision 1.49
+Merging differences between 1.48 and 1.49 into scriptingEngine.tcl
+M dcss/scripts/engine/scriptingEngine.tcl
+RCS file: /home/code/repository/dcss/scripts/engine/timerService.tcl,v
+retrieving revision 1.6
+retrieving revision 1.13
+Merging differences between 1.6 and 1.13 into timerService.tcl
+rcsmerge: warning: conflicts during merge
+cvs checkout: conflicts found in dcss/scripts/engine/timerService.tcl
+C dcss/scripts/engine/timerService.tcl
+U dcss/scripts/engine/util.tcl
+cvs checkout: Updating dcss/scripts/operations
+M dcss/scripts/operations/ISampleMountingDevice.tcl
+U dcss/scripts/operations/ISampleMountingDeviceSoftOnly.tcl
+M dcss/scripts/operations/ISampleSimulator.tcl
+U dcss/scripts/operations/SAM4BL122.itcl
+RCS file: /home/code/repository/dcss/scripts/operations/SampleMountingDevice.itcl,v
+retrieving revision 1.121
+retrieving revision 1.144
+Merging differences between 1.121 and 1.144 into SampleMountingDevice.itcl
+rcsmerge: warning: conflicts during merge
+cvs checkout: conflicts found in dcss/scripts/operations/SampleMountingDevice.itcl
+C dcss/scripts/operations/SampleMountingDevice.itcl
+U dcss/scripts/operations/SampleSimulator.itcl
+RCS file: /home/code/repository/dcss/scripts/operations/SequenceDevice.tcl,v
+retrieving revision 1.290
+retrieving revision 1.309
+Merging differences between 1.290 and 1.309 into SequenceDevice.tcl
+rcsmerge: warning: conflicts during merge
+cvs checkout: conflicts found in dcss/scripts/operations/SequenceDevice.tcl
+C dcss/scripts/operations/SequenceDevice.tcl
+M dcss/scripts/operations/SequenceDevice_reorient.tcl
+U dcss/scripts/operations/abortMonitor.tcl
+U dcss/scripts/operations/alignCollimator.tcl
+U dcss/scripts/operations/alignTable.tcl
+U dcss/scripts/operations/alignTungsten.tcl
+U dcss/scripts/operations/barcodeData.tcl
+U dcss/scripts/operations/bw_cobalt.tcl
+U dcss/scripts/operations/calibrateDetector.tcl
+U dcss/scripts/operations/calibrateEnergy.tcl
+U dcss/scripts/operations/calibrateSampleCamera.tcl
+U dcss/scripts/operations/centerCrystal.tcl
+RCS file: /home/code/repository/dcss/scripts/operations/centerLoop.tcl,v
+retrieving revision 1.32
+retrieving revision 1.40
+Merging differences between 1.32 and 1.40 into centerLoop.tcl
+rcsmerge: warning: conflicts during merge
+cvs checkout: conflicts found in dcss/scripts/operations/centerLoop.tcl
+C dcss/scripts/operations/centerLoop.tcl
+U dcss/scripts/operations/centerLoopSim.tcl
+U dcss/scripts/operations/centerRaster.tcl
+U dcss/scripts/operations/changeOver.tcl
+U dcss/scripts/operations/checkBeamlineConditions.tcl
+U dcss/scripts/operations/checkSampleXYZ.tcl
+U dcss/scripts/operations/check_sample_on.tcl
+U dcss/scripts/operations/cleanupAtTheEnd.tcl
+U dcss/scripts/operations/collectRaster.tcl
+U dcss/scripts/operations/collectRasters.tcl
+U dcss/scripts/operations/collectRun.tcl
+U dcss/scripts/operations/collectShutterless.tcl
+U dcss/scripts/operations/collectWeb.tcl
+U dcss/scripts/operations/collect_procedures.tcl
+U dcss/scripts/operations/collimatorMove.tcl
+U dcss/scripts/operations/collimator_diode.tcl
+U dcss/scripts/operations/contrast_auto.tcl
+U dcss/scripts/operations/contrast_ion.tcl
+U dcss/scripts/operations/energySuggestOffsets.tcl
+U dcss/scripts/operations/homingSampleXY.tcl
+U dcss/scripts/operations/inlineCameraAutofocus.tcl
+U dcss/scripts/operations/inlineCenterLoop.tcl
+U dcss/scripts/operations/inlineLightControl.tcl
+U dcss/scripts/operations/inlineMoveSample.tcl
+U dcss/scripts/operations/lightsControl.tcl
+U dcss/scripts/operations/madCollect.tcl
+U dcss/scripts/operations/madScan.tcl
+U dcss/scripts/operations/madScanSim.tcl
+U dcss/scripts/operations/manualRastering.tcl
+U dcss/scripts/operations/matchup.tcl
+U dcss/scripts/operations/mfdBeamHappy.tcl
+U dcss/scripts/operations/mfd_horz_encoder_op.tcl
+U dcss/scripts/operations/mfd_vert_encoder_op.tcl
+U dcss/scripts/operations/monitorIntensity.tcl
+U dcss/scripts/operations/mono_theta_encoder_op.tcl
+U dcss/scripts/operations/moveCrystal.tcl
+U dcss/scripts/operations/moveEncoders.tcl
+U dcss/scripts/operations/moveSample.tcl
+RCS file: /home/code/repository/dcss/scripts/operations/normalize.tcl,v
+retrieving revision 1.43
+retrieving revision 1.56
+Merging differences between 1.43 and 1.56 into normalize.tcl
+M dcss/scripts/operations/normalize.tcl
+U dcss/scripts/operations/optimalExcitation.tcl
+U dcss/scripts/operations/optimalSim.tcl
+U dcss/scripts/operations/optimizeMotor.tcl
+U dcss/scripts/operations/pauseDataCollection.tcl
+U dcss/scripts/operations/peakGeneric.tcl
+U dcss/scripts/operations/photodiode.tcl
+U dcss/scripts/operations/prepareForScan.tcl
+U dcss/scripts/operations/rasterRunsConfig.tcl
+U dcss/scripts/operations/rasterRunsFlip.tcl
+U dcss/scripts/operations/rasteringUpdate.tcl
+U dcss/scripts/operations/recoverFromScan.tcl
+cvs checkout: move away dcss/scripts/operations/runTimer.tcl; it is in the way
+C dcss/scripts/operations/runTimer.tcl
+U dcss/scripts/operations/runsConfig.tcl
+U dcss/scripts/operations/sampleMark.tcl
+U dcss/scripts/operations/scan3DFlip.tcl
+U dcss/scripts/operations/scan3DSetup.tcl
+U dcss/scripts/operations/scan3DUserSetup.tcl
+U dcss/scripts/operations/scanMotor.tcl
+M dcss/scripts/operations/sequence.tcl
+U dcss/scripts/operations/stringUpdate.tcl
+U dcss/scripts/operations/timeMoveEnergy.tcl
+U dcss/scripts/operations/timeOfMovement.tcl
+U dcss/scripts/operations/timeOptEnergy.tcl
+U dcss/scripts/operations/userAlignBeam.tcl
+U dcss/scripts/operations/userCollimator.tcl
+M dcss/scripts/operations/userLog.tcl
+U dcss/scripts/operations/videoVisexSnapshot.tcl
+U dcss/scripts/operations/visexMoveSample.tcl
+U dcss/scripts/operations/visexRotatePhi.tcl
+U dcss/scripts/operations/visexZoom.tcl
+U dcss/scripts/operations/waitForGoodBeam.tcl
+M dcss/scripts/operations/xraySampleSearch.tcl
+cvs checkout: Updating dcss/scripts/strings
+U dcss/scripts/strings/rasterDefinition.tcl
+U dcss/scripts/strings/runDefinition.tcl
+U dcss/scripts/strings/systemStatus.tcl
+U dcss/scripts/strings/userAlignBeamStatus.tcl
+cvs checkout: Updating dcss/src
+cvs checkout: warning: dcss/src/TclList.cxx is not (any longer) pertinent
+cvs checkout: warning: dcss/src/TclList.h is not (any longer) pertinent
+U dcss/src/dcss_broadcast.c
+U dcss/src/dcss_broadcast.h
+U dcss/src/dcss_client.c
+U dcss/src/dcss_database.c
+U dcss/src/dcss_database.h
+U dcss/src/dcss_device.h
+RCS file: /home/code/repository/dcss/src/dcss_gui_client.c,v
+retrieving revision 1.105
+retrieving revision 1.119
+Merging differences between 1.105 and 1.119 into dcss_gui_client.c
+M dcss/src/dcss_gui_client.c
+U dcss/src/dcss_gui_client.h
+U dcss/src/dcss_hardware_client.c
+U dcss/src/dcss_main.c
+U dcss/src/dcss_ssl.c
+cvs checkout: Updating dcss/tmp
+U dcss/tmp/README.txt
+
+
+[yangx@yangx ~/release-5_1]$ cvs -d :pserver:ogata@smb.slac.stanford.edu:/home/code/repository co -A dhs
+? dhs/nsls-x4-dhs-src.tar.gz
+? dhs/galil_scripts/script-x4a-galil1.txt
+? dhs/galil_scripts/script-x4a-galil1.txt-1
+? dhs/galil_scripts/script-x4a-galil2.txt
+? dhs/galil_scripts/script-x4a-galil2.txt-1
+? dhs/galil_scripts/script-x4a-galil3.txt
+? dhs/galil_scripts/script-x4a.txt
+? dhs/linux/dhs
+? dhs/src/dmc2180API.cc-1
+cvs checkout: Updating dhs
+U dhs/test1.mccd
+cvs checkout: Updating dhs/decunix
+cvs checkout: Updating dhs/galil_scripts
+M dhs/galil_scripts/script5.txt
+cvs checkout: Updating dhs/irix
+cvs checkout: Updating dhs/linux
+cvs checkout: Updating dhs/linux64
+cvs checkout: Updating dhs/src
+M dhs/src/dhs_dcs_messages.cc
+RCS file: /home/code/repository/dhs/src/dhs_dmc2180.cc,v
+retrieving revision 1.32
+retrieving revision 1.33
+Merging differences between 1.32 and 1.33 into dhs_dmc2180.cc
+M dhs/src/dhs_dmc2180.cc
+M dhs/src/dhs_dmc2180.h
+M dhs/src/dhs_messages.h
+M dhs/src/dhs_motor_messages.cc
+M dhs/src/dmc2180API.cc
+M dhs/src/dmc2180API.h
+cvs checkout: Updating dhs/win32
+[yangx@yangx ~/release-5_1]$ 
+[yangx@yangx ~/release-5_1]$ 
+[yangx@yangx ~/release-5_1]$ 
+[yangx@yangx ~/release-5_1]$ 
+[yangx@yangx ~/release-5_1]$ cvs -d :pserver:ogata@smb.slac.stanford.edu:/home/code/repository co -A BluIceWidgets
+? BluIceWidgets/CassetteView.tcl-1
+? BluIceWidgets/CassetteView.tcl-ori
+? BluIceWidgets/CollectView.tcl-ori
+? BluIceWidgets/HutchTab.tcl-1
+? BluIceWidgets/HutchTab.tcl-ori
+? BluIceWidgets/HutchView-5.tcl
+? BluIceWidgets/HutchView.tcl-1
+? BluIceWidgets/HutchView.tcl-2
+? BluIceWidgets/HutchView.tcl-3
+? BluIceWidgets/HutchView.tcl-4
+? BluIceWidgets/HutchView.tcl-5
+? BluIceWidgets/HutchView.tcl-6
+? BluIceWidgets/HutchView.tcl-7
+? BluIceWidgets/HutchView.tcl-good
+? BluIceWidgets/HutchView.tcl-test
+? BluIceWidgets/Resolution.tcl-ori
+? BluIceWidgets/RunSequenceView.tcl-new
+? BluIceWidgets/SamplePositionWidget.tcl-Omega
+? BluIceWidgets/SamplePositionWidget.tcl-ori
+? BluIceWidgets/SequenceCrystals.tcl-1
+? BluIceWidgets/SequenceCrystals.tcl-2
+? BluIceWidgets/SetupTab.tcl-ori
+? BluIceWidgets/SimpleRobot.tcl-2
+? BluIceWidgets/SimpleRobot.tcl-2012-3-22
+? BluIceWidgets/SimpleRobot.tcl-3
+? BluIceWidgets/SimpleRobot.tcl-ori
+? BluIceWidgets/images/Beampath_photoshop.gif
+? BluIceWidgets/images/Beampath_photoshop2.gif
+? BluIceWidgets/images/Beampath_photoshop4.gif
+? BluIceWidgets/images/Beampath_photoshop5.gif
+? BluIceWidgets/images/Beampath_photoshop6.gif
+? BluIceWidgets/images/Beampath_photoshop8.gif
+? BluIceWidgets/images/beampath-gonio-1.gif
+? BluIceWidgets/images/beampath-gonio-2.gif
+? BluIceWidgets/images/beampath-gonio-3.gif
+? BluIceWidgets/images/beampath-gonio-4.gif
+? BluIceWidgets/images/beampath-rotate-right-1.gif
+? BluIceWidgets/images/beampath-rotate-right-2.gif
+? BluIceWidgets/images/beampath2.gif
+? BluIceWidgets/images/beampath2.gif-bad
+? BluIceWidgets/images/q4_big.gif
+? BluIceWidgets/images/q4_big2.gif
+? BluIceWidgets/images/xyz.gif
+cvs checkout: Updating BluIceWidgets
+U BluIceWidgets/Anneal.tcl
+U BluIceWidgets/BarcodeView.tcl
+U BluIceWidgets/BeamSize.tcl
+U BluIceWidgets/BeamlineVideo.tcl
+RCS file: /home/code/repository/BluIceWidgets/BluIce.tcl,v
+retrieving revision 1.40
+retrieving revision 1.45
+Merging differences between 1.40 and 1.45 into BluIce.tcl
+rcsmerge: warning: conflicts during merge
+cvs checkout: conflicts found in BluIceWidgets/BluIce.tcl
+C BluIceWidgets/BluIce.tcl
+M BluIceWidgets/CanvasShapes.tcl
+RCS file: /home/code/repository/BluIceWidgets/CassetteView.tcl,v
+retrieving revision 1.39
+retrieving revision 1.43
+Merging differences between 1.39 and 1.43 into CassetteView.tcl
+M BluIceWidgets/CassetteView.tcl
+U BluIceWidgets/ClientStatusView.tcl
+RCS file: /home/code/repository/BluIceWidgets/CollectView.tcl,v
+retrieving revision 1.114
+retrieving revision 1.118
+Merging differences between 1.114 and 1.118 into CollectView.tcl
+M BluIceWidgets/CollectView.tcl
+U BluIceWidgets/Collimator.tcl
+U BluIceWidgets/CommandPrompt.tcl
+U BluIceWidgets/Default.tcl
+U BluIceWidgets/DetectorControl.tcl
+U BluIceWidgets/DiffImageViewer.tcl
+M BluIceWidgets/DoseModeControl.tcl
+RCS file: /home/code/repository/BluIceWidgets/FrontEndSlitsView.tcl,v
+retrieving revision 1.16
+retrieving revision 1.17
+Merging differences between 1.16 and 1.17 into FrontEndSlitsView.tcl
+M BluIceWidgets/FrontEndSlitsView.tcl
+M BluIceWidgets/GonioView.tcl
+RCS file: /home/code/repository/BluIceWidgets/HutchTab.tcl,v
+retrieving revision 1.30
+retrieving revision 1.31
+Merging differences between 1.30 and 1.31 into HutchTab.tcl
+M BluIceWidgets/HutchTab.tcl
+RCS file: /home/code/repository/BluIceWidgets/HutchView.tcl,v
+retrieving revision 1.38
+retrieving revision 1.40
+Merging differences between 1.38 and 1.40 into HutchView.tcl
+rcsmerge: warning: conflicts during merge
+cvs checkout: conflicts found in BluIceWidgets/HutchView.tcl
+C BluIceWidgets/HutchView.tcl
+U BluIceWidgets/HutchViewBL12-2.tcl
+U BluIceWidgets/InlineMotorView.tcl
+U BluIceWidgets/IonChamberFile.tcl
+U BluIceWidgets/Light.tcl
+U BluIceWidgets/MadScanView.tcl
+U BluIceWidgets/MotorConfiguration.tcl
+U BluIceWidgets/MotorScanView.tcl
+U BluIceWidgets/OptimizedEnergy.tcl
+U BluIceWidgets/RasterCanvas.tcl
+U BluIceWidgets/RasterTab.tcl
+M BluIceWidgets/Resolution.tcl
+RCS file: /home/code/repository/BluIceWidgets/RobotView.tcl,v
+retrieving revision 1.155
+retrieving revision 1.166
+Merging differences between 1.155 and 1.166 into RobotView.tcl
+M BluIceWidgets/RobotView.tcl
+U BluIceWidgets/RunSequenceView.tcl
+RCS file: /home/code/repository/BluIceWidgets/SamplePositionWidget.tcl,v
+retrieving revision 1.43
+retrieving revision 1.66
+Merging differences between 1.43 and 1.66 into SamplePositionWidget.tcl
+rcsmerge: warning: conflicts during merge
+cvs checkout: conflicts found in BluIceWidgets/SamplePositionWidget.tcl
+C BluIceWidgets/SamplePositionWidget.tcl
+U BluIceWidgets/SampleTab.tcl
+U BluIceWidgets/Scan3DView.tcl
+RCS file: /home/code/repository/BluIceWidgets/ScreeningControl.tcl,v
+retrieving revision 1.39
+retrieving revision 1.41
+Merging differences between 1.39 and 1.41 into ScreeningControl.tcl
+M BluIceWidgets/ScreeningControl.tcl
+U BluIceWidgets/ScreeningTab.tcl
+RCS file: /home/code/repository/BluIceWidgets/SequenceActions.tcl,v
+retrieving revision 1.66
+retrieving revision 1.69
+Merging differences between 1.66 and 1.69 into SequenceActions.tcl
+M BluIceWidgets/SequenceActions.tcl
+M BluIceWidgets/SequenceCrystals.tcl
+RCS file: /home/code/repository/BluIceWidgets/SetupTab.tcl,v
+retrieving revision 1.204
+retrieving revision 1.238
+Merging differences between 1.204 and 1.238 into SetupTab.tcl
+M BluIceWidgets/SetupTab.tcl
+M BluIceWidgets/SimpleRobot.tcl
+U BluIceWidgets/SpectrometerView.tcl
+RCS file: /home/code/repository/BluIceWidgets/StatusBar.tcl,v
+retrieving revision 1.37
+retrieving revision 1.39
+Merging differences between 1.37 and 1.39 into StatusBar.tcl
+rcsmerge: warning: conflicts during merge
+cvs checkout: conflicts found in BluIceWidgets/StatusBar.tcl
+C BluIceWidgets/StatusBar.tcl
+U BluIceWidgets/UsersTab.tcl
+U BluIceWidgets/VisexView.tcl
+U BluIceWidgets/alignFrontEndViewBL12-2.tcl
+RCS file: /home/code/repository/BluIceWidgets/bluice.tcl,v
+retrieving revision 1.49
+retrieving revision 1.54
+Merging differences between 1.49 and 1.54 into bluice.tcl
+M BluIceWidgets/bluice.tcl
+U BluIceWidgets/centerCrystalView.tcl
+M BluIceWidgets/megaScreeningView.tcl
+U BluIceWidgets/pkgIndex.tcl
+cvs checkout: Updating BluIceWidgets/data
+cvs checkout: Updating BluIceWidgets/images
+[yangx@yangx ~/release-5_1]$ pwd
+/home/yangx/release-5_1
+[yangx@yangx ~/release-5_1]$ 
+[yangx@yangx ~/release-5_1]$ 
+[yangx@yangx ~/release-5_1]$ 
+[yangx@yangx ~/release-5_1]$ cvs -d :pserver:ogata@smb.slac.stanford.edu:/home/code/repository co -A epicsgw
+? epicsgw/linux
+cvs checkout: Updating epicsgw
+U epicsgw/makefile
+cvs checkout: Updating epicsgw/src
+[yangx@yangx ~/release-5_1]$ cvs -d :pserver:ogata@smb.slac.stanford.edu:/home/code/repository co -A imgsrv
+? imgsrv/linux/filebrowser
+? imgsrv/linux/gui_test
+? imgsrv/linux/http_test
+? imgsrv/linux/imgsrv
+? imgsrv/linux/test
+? imgsrv/linux/test1
+cvs checkout: Updating imgsrv
+U imgsrv/makefile
+cvs checkout: Updating imgsrv/decunix
+cvs checkout: Updating imgsrv/doc
+cvs checkout: Updating imgsrv/irix
+cvs checkout: Updating imgsrv/linux
+cvs checkout: Updating imgsrv/src
+U imgsrv/src/SessionCache.cxx
+cvs checkout: Updating imgsrv/tcl
+cvs checkout: Updating imgsrv/test
+[yangx@yangx ~/release-5_1]$ cvs -d :pserver:ogata@smb.slac.stanford.edu:/home/code/repository co -A autochooch
+? autochooch/install
+? autochooch/linux
+cvs checkout: Updating autochooch
+M autochooch/makefile
+cvs checkout: Updating autochooch/data
+U autochooch/data/BL11-1.par
+U autochooch/data/BL9-1.par
+U autochooch/data/BL9-2.par
+cvs checkout: Updating autochooch/doc
+cvs checkout: Updating autochooch/examples
+cvs checkout: Updating autochooch/src
+U autochooch/src/chooch_remote.sh
+U autochooch/src/run_autochooch.csh
+[yangx@yangx ~/release-5_1]$ cvs -d :pserver:ogata@smb.slac.stanford.edu:/home/code/repository co -A impdhs
+? impdhs/linux
+cvs checkout: Updating impdhs
+cvs checkout: Updating impdhs/doc
+cvs checkout: Updating impdhs/src
+cvs checkout: Updating impdhs/test
+[yangx@yangx ~/release-5_1]$ 
+[yangx@yangx ~/release-5_1]$ 
+[yangx@yangx ~/release-5_1]$ 
+[yangx@yangx ~/release-5_1]$ cvs -d :pserver:ogata@smb.slac.stanford.edu:/home/code/repository co -A blu-ice
+cvs checkout: Updating blu-ice
+cvs checkout: Updating blu-ice/data
+cvs checkout: Updating blu-ice/images
+cvs checkout: Updating blu-ice/irix
+cvs checkout: Updating blu-ice/scripts
+M blu-ice/scripts/motor_control.tcl
+cvs checkout: Updating blu-ice/src
+[yangx@yangx ~/release-5_1]$ 
+[yangx@yangx ~/release-5_1]$ 
+[yangx@yangx ~/release-5_1]$ cvs -d :pserver:ogata@smb.slac.stanford.edu:/home/code/repository co -A simdhs
+cvs checkout: Updating simdhs
+cvs checkout: Updating simdhs/examples
+cvs checkout: Updating simdhs/scripts
+U simdhs/scripts/log.tcl
+U simdhs/scripts/operations.tcl
+U simdhs/scripts/pilatus.tcl
+U simdhs/scripts/simdhs.tcl
+U simdhs/scripts/sr570.tcl
+U simdhs/scripts/temperatureDhs.tcl
+cvs checkout: Updating simdhs/scripts/tests
+[yangx@yangx ~/release-5_1]$ 
+[yangx@yangx ~/release-5_1]$ 
+[yangx@yangx ~/release-5_1]$ cvs -d :pserver:ogata@smb.slac.stanford.edu:/home/code/repository co -A simdetector
+? simdetector/linux
+? simdetector/test
+? simdetector/test.tar
+cvs checkout: Updating simdetector
+cvs checkout: Updating simdetector/doc
+cvs checkout: Updating simdetector/src
+M simdetector/src/SimDetector.cxx
+[yangx@yangx ~/release-5_1]$ 
+

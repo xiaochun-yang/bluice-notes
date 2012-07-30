@@ -1,0 +1,10 @@
+changes made in dcs from dkong machine transfering to yangx machine
+
+use grep -r "dkong" * to search all the file containing 'dkong" and change it
+to yangx. It's only a few palces. not a big deal.
+
+X4A.config
+ccd_dist/LOGIN_files/log_x4a_api_418
+batchbuild/stop_x4a
+batchbuild/start_x4a
+

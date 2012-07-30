@@ -1,0 +1,14 @@
+problem:
+
+Can't remove the puck file from the crystal server. It will have message,
+Everytime removing it. 
+
+"sil 8 is currently locked and cannot be removed from cache"
+
+Solution:
+
+delete it from the following file
+
+apache-tomcat-5.5.20/webapps/crystals/data/cassettes/yangx/cassettes.xml
+
+

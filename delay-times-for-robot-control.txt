@@ -1,0 +1,47 @@
+the delay time I added on in the robot operation.
+
+1.  in ../dcss/scripts/operations/SampleMountingDevice.itcl
+
+SampleMountingDevice::mountNextCrystal
+500 ms between dismount and mount
+
+        #dismount first
+        set result [dismountCrystal $cassette $row $column]
+ 
+        #wait for 500 ms before mount
+        after 500  
+  
+        #Then mount
+        set result [mountCrystal $cassette_nxt $row_nxt $column_nxt 0]
+
+2. in dismount function
+
+	set operationHandle [eval start_waitable_operation set_sample_address $argument]
+        set result [wait_for_operation_to_finish $operationHandle]
+
+        set argument "$cassette $row $column"
+        set operationHandle [eval start_waitable_operation dismount_crystal $cassette $row $column]
+        set result [wait_for_operation_to_finish $operationHandle]
+
+3. In mount function
+
+             set argument "$column$row"
+             set operationHandle [eval start_waitable_operation set_sample_address $argument]
+             set result [wait_for_operation_to_finish $operationHandle]
+
+             set argument "$cassette $row $column"
+             set operationHandle [eval start_waitable_operation mount_crystal $argument]
+             set result [wait_for_operation_to_finish $operationHandle]
+
+4.in vb robot program
+
+500 ms at set_sample_address
+
+500 ms at mount_crystal
+
+200 ms at dismount_crystal
+
+Should change dismount to 500 and mount to 200.
+
+5. So from dismount to mount there will be about 500ms + 200ms + 500ms + 500ms
++ 500ms = 2.2 sec. That's too long. Need to shorten this.
