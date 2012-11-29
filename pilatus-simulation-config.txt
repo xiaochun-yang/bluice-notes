@@ -1,5 +1,6 @@
+************************************************************************
 the following are the setup for running pilatus from ../simdhs directory.
-
+*************************************************************************
 In the .config file, the followings are needed to be added
 
 pilatus.name=detector
@@ -23,7 +24,28 @@ Then you can run as following
 
 ./pilatus X4A
 
+**************************************************************************
+Run real pilatusDHS
+**************************************************************************
 
+1) go to pilatusDhs/scripts
+2) ./run.tcl X4A
+
+*************************************************************************
+For test, using a simulation pilatus detector server
+*************************************************************************
+
+1) cd tests (go to tests directory)
+2) ./pilatusServer.tcl  (add "vwait forever" at the end of the code)
+
+This will start the detector (simulate detector server)
+
+DCSS <------------> pilatusDHS <----------> detectorServer
+(port:14242)                                (port:41234)
+
+************************************************************************
 galil3 is used with pilatus. to start it as the following:
+************************************************************************
 
 ../release-5_1/microdiffraction/linux/dhs X4A galil3
+

@@ -9,6 +9,19 @@ In ..dhs/src. The following changes has been made for "homing" and a "script"
          "DHS_MESSAGE_MOTOR_START_SCRIPT"	for any script
 
 
+   add 		char  script[10]; in
+
+typedef struct
+        {
+        xos_index_t                     deviceIndex;
+        dcs_device_type_t       deviceType;
+
+        dcs_scaled_t            destination;
+        char                    script[10];
+        } dhs_motor_start_move_message_t;
+
+
+
 (2) Add following lines in function of "stoh_start_motor_move" in "dhs_motor_messages.cc"
 The script need to statrt with "#"
 
@@ -24,8 +37,23 @@ The script need to statrt with "#"
                 LOG_INFO1("message.script=%s \n", message.script);
                 LOG_WARNING("yang galil script messages sends over");
         }
+        else
+        {
+                message.destination     = atof( gToken[2] );
+                MESSAGE_ID = DHS_MESSAGE_MOTOR_START_MOVE;
+                // LOG_WARNING("yang before move messages sends over");
+        }
+        /* send message to device's thread */
+        if ( xos_thread_message_send( deviceThread, MESSAGE_ID,
+                pSemaphore, & message ) == XOS_FAILURE )
+                {
+                LOG_WARNING("stoh_start_motor_move -- error sending message to
+thread.");
+                return XOS_FAILURE;
+                }
 
-(3) Add two functions in_dmc2180.cc
+
+(3) Add two functions in dhs_dmc2180.cc and dhs_dmc2180.h
 
 	dmc2180_motor_start_home
 	dmc2180_motor_start_script
@@ -35,11 +63,25 @@ if it include an offset. gToken[3] used as offset can be offset.
 
 The "dmc2180_motor_start_script" is not well tested. 
 
-(4) Add "start_home" function in Dmc2180API.cc
+(4) Add "start_home" function in Dmc2180API.cc and Dmc2180API.h
 
 In this function, The home command used is specially for my case. It's not
 generallized. It will need some work to make it for a general case. 
 
+        /* yang Comment this out because galil2 need to be set to CN-1
+        execute( "CN 1", response, &error_code,FALSE );
+        if (error_code != 0 )
+                {
+                LOG_WARNING("Could not set CN\n");
+                return XOS_FAILURE;
+                }
+        */
+
+	add the following in the function :get_stop_reason(char *
+statusString)
+                case 10:
+                        strcpy(statusString, "normal");
+                        break;
 
 
 
@@ -55,7 +97,6 @@ In ..dcss/src the following changes are made for handling "homing"
 	because "home" and "script" are not a double.
 
 
-
 In ..DcsWidgets the following changes are made for "homing" button to work on the staff tab
 
 (1)	In the Device.tcl file
@@ -68,11 +109,4 @@ In ..DcsWidgets the following changes are made for "homing" button to work on th
 	In MotorControlPanel.tcl		
 
 	Add Home button and handleHomeTo function
-
-
-
-
-
-	
-
 

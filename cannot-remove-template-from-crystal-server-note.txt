@@ -1,3 +1,8 @@
+to start the crystal server, do the following in the firefox
+
+http://localhost:8080/crystals
+
+
 problem:
 
 Can't remove the puck file from the crystal server. It will have message,

@@ -1,0 +1,19 @@
+The purpose for this part of codes is to add a warm up grabber feature
+in the screening mode so that people can set after how many mount/dismount 
+the robot should warm up the grabber in case it collects too much ice.
+
+at the beging of the file 
+set grabber-warm-index 0
+
+
+in the SampleMountingDevice::mountNextCrystal function
+
+#put after mountCrystal
+
+global grabber-warm-index 
+set grabber-warm-index [expr grabber-warm-index + 1]
+
+if { $grabber-warm-index > $wash_cycle } {
+	#warm the grabber
+	start_operation warm_up_grabber
+}

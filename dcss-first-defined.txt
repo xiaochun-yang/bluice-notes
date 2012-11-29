@@ -1,0 +1,18 @@
+The dcss is first defined in the bluice.tcl file
+it defined as 
+
+DCS::DcssUserProtocol dcss $dcssHostName $dcssPort \
+                 -useSSL [::config getDcssUseSSL] \
+                 -authProtocol $authProtocol \
+                 -_reconnectTime 1000 \
+                 -callback "" \
+                 -networkErrorCallback ""
+
+So dcss is a object of the class of DCS::DcssUserProtocol
+
+
+It's being used as ::dcss and dcss later on used in the other files
+
+DCS::DcssUserProtocol is the name of a class. It can be written like "DCSDcssUserProtocol". The "::" in between is just letter any letters. It makes people think it represent a special meaning because class function usually written like "classname::functionname" It's kind of confusing the way the class name is written.
+
+ 
