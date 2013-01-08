@@ -77,10 +77,15 @@ here is what I did.
 	In fact, I can update everyone of the modules manually.
 
 4. build bulice --- in batchbuild do the following
+
+	should first do 
+	gmake clear uninstall
+	to get rid of the old *.o files then do the following
+
 	gmake
 
 	it has a error when build dcss. It's could not find /usr/bin/ld -litcl
-	I made following changes in the makefile under linux in the dcss dir.
+	I made following changes in the makefile in the dcss dir.
 
 	change STD_LIBS += -ltk -ltcl -litcl
 	to     STD_LIBS += -ltk -ltcl /usr/lib/itcl3.3/libitcl3.3.so
@@ -121,5 +126,81 @@ In StatusBar.tcl
         -foreground red
         return
     }
+
+6. There's missing code in the dhs/src/dhs_Quantum4.cc file. Adding the
+   following if it's missing.
+
+                        if ( messageID == DHS_MESSAGE_STRING_POLL )
+                        {
+                                xos_semaphore_post( semaphore );
+                                continue;
+                        }
+
+
+	
+7 In the file ../dcss/scripts/operations/collect_procedures.tcl
+  and collectShutterless.tcl
+
+I have to comment of the following lines
+
+          #  if {$needSaveSystemSnapshot} {
+          #      set snapshotPath [file join $directoryNew $filename.txt]
+          #      saveSystemSnapshot $userName $sessionID $snapshotPath
+          #  }
+
+the function "saveSystemSnapshot" will updated the encoders and ionchambers.
+The data collect will alway stuck here. Need to be revisit here again once
+the beam is back. 
+
+(8). Add the following in the file dhs_dmc2180.cc in the (somehow the upgrade
+erased some of the changes i made before)
+
+		 if (messageID == DHS_MESSAGE_ION_CHAMBER)
+
+//yang add
+                                // parse_ion_message(message);
+                                /* signal calling thread */
+                                char commandToken[200];
+                                float i0,i1,i2,i3,i4,i5,i6,i7;
+                                sscanf( ((const char*) message),"%s %f %f %f
+%f %f %f %f %f",commandToken,&i0,&i1,&i2,&i3,&i4,&i5,&i6,&i7);
+                                // sprintf(htos_message,
+                                // "htos_report_ion_chambers %f i0 %f i1 %f i2
+                                // %f e_lvdt_m1_ubend %f e_lvdt_m1_dbend
+                                // %f",tm,i0,i1,i2,i3,i4);
+                                sprintf(htos_message,
+"htos_set_string_completed analogInStatus1 normal %f %f %f %f %f %f %f
+%f",i0,i1,i2,i3,i4,i5,i6,i7);
+                                // LOG_INFO1("yang_ion : %s ",htos_message); 
+
+(9). In the galil script file in the dhs 
+for the oscillation part. My CB is shutter open and SB is shutter close. (ssrl
+SB is shutter open and CB is shutter close. In script_x4a_galil1-new.txt, I
+add changed all CB to SB and SB to CB for x4a case. Also I add CB 1 at
+begaining of Expose and make sure that the 2nd shutter (in channel 1) is open
+for the exposure.
+
+At NoExpose routine. The ShutCh is set to 0 which is none exist so that SB CB 
+won't do anything. But somehow SB(CB) 0 will invoke SB(CB) 1. it's
+really strange. Called galil. It confirmed that 0 as default same as 1. That's
+the way they designed even though it doesn't make any sense at all. Now I am 
+using 17 as defaul after test 1-16 channels. changed the following code in the
+dhs_dmc2180.cc 
+
+        if ( exposeCmd.useShutter == TRUE ) {
+                Dmc2180_shutter * shutter;
+                shutter = (Dmc2180_shutter * ) dhs_database_get_volatile_data(
+exposeCmd.shutterDeviceIndex );
+                exposeCmd.shutterChannel = shutter->channel;
+        } else {
+                exposeCmd.shutterChannel = 17;
+        }
+ 
+
+
+
+
+
+
 
 

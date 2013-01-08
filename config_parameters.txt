@@ -1,0 +1,45 @@
+some parameter meanings in the config file
+
+For the DAT file
+****************
+
+collect_config
+13
+self standardString
+1 1 1 1 1 
+0 0 0 0 0
+0 0 0 0 0 0 0 1 0 0 0	7th number (start with 0) is for enable the display of calculate data collection timer
+
+
+sil_config
+13
+self standardString
+0 1 1 1 1
+0 1 1 1 1
+1 1 1 1 	number 0--add image 1--analyze image 2--autoindex 3--reorient
+
+collect_default
+13
+self collect_default
+1 1 1 1 1
+0 0 0 0 0
+1 3 60 600 50 100 number 3 (600) Max exposure time can be set in the data collection
+
+For the CONFIG file
+*******************
+
+galil1.shutter=shutter1 	1 	open
+				|	 |
+				|	 |
+			I/O channel      |
+			             Channel State [ 0--open(CB)  1--closed(SB)]
+
+galil1.shutter=shutter2         2       closed
+                                |        |
+                                |        |
+                        I/O channel      |
+                                     Channel State [ 0--closed(CB) 1--open(SB)]
+
+It's only needed to be defined here. Program will take care the rest.
+
+

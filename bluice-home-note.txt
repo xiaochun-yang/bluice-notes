@@ -25,6 +25,8 @@ typedef struct
 (2) Add following lines in function of "stoh_start_motor_move" in "dhs_motor_messages.cc"
 The script need to statrt with "#"
 
+	 xos_message_id_t        MESSAGE_ID;
+
         if(strcmp(gToken[2], "home")==0)
         {
                 MESSAGE_ID = DHS_MESSAGE_MOTOR_START_HOME;

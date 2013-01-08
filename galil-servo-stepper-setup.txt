@@ -35,12 +35,29 @@ there's a jumper on the DMC-2183 board. jumper on is stepper, out is servo
 Change to stepper from servo
 
 (1)  Enable "position loop"
-(2)  Click on "Command Source" --> set to "step and direction" then click on 
+(1)  Click on "Command Source" --> set to "step and direction" then click on 
      the button --> set input counts to 1 and position counts to 1.
+
+(2)  Enable "position loop"
+
+(3)   				position Loop 	velocity Loop 	Current Loop
+
+	Proportional gain	300.0552	0.20068		40.0879
+	Integral gain		0.06257		0.0129		2.8189
+	derivative gain		2809.1893	0.2231
+	V.F			0		0
+	A.F.			0		All Pass
+
 (3)	OEE =0	disable on-off-error
 	KI=0 KP=6 KD=64
 	CEE = 4 or 6
 	MTE = -2
+	SH
+	BN
+
+	somehow when it's change from servo to step. the motor is always being
+turned off whenever bluice is restarted. I have to do sh to turn it on
+manually. I did SH and then BN from the startterm. then it become ok.  
 	
 
 

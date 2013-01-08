@@ -1,0 +1,48 @@
+The purpose for this part of codes is to add a warm up grabber feature
+in the screening mode so that people can set after how many mount/dismount 
+the robot should warm up the grabber in case it collects too much ice.
+
+(1) The follwoing varaible and function are added in the file SequenceDevice.tcl
+
+private variable m_startWarmUp 0
+private variable m_wcycle 0
+
+::itcl::body SequenceDevice::doGrabberWarmCycle { cycle } {
+
+        set m_wcycle [expr $m_wcycle + 1]
+        if { $m_wcycle >= $cycle } {
+                #start_operation warm_up_grabber
+                puts "yangx Warming cycle start"
+                set m_startWarmUp 1
+                #reset the wcycle to 0
+                set m_wcycle 0
+        }
+}
+
+Add the foloowing in the function "SequenceDevice::mountCrystal"
+            #yangx warm_up grabber
+            if { $m_startWarmUp } {
+                start_operation warm_up_grabber
+                set m_startWarmUp 0
+            }
+
+ set m_wcycle 0
+It's very impartant here that the warm_up_grabber executed in the
+MountNextCrystal process not in the doGrabberWarmCycle(). This way
+it ensure that the grabber is warmed right after the sample is mounted.
+And also In the Mount NextCrystal, it will wait warm_up_grabber finish,
+and then execute the next operation. 
+
+(2) In BluiceWidgets/sequenceActions.tcl, add the following
+
+16 "Warm Grabber Cycle    " 1 1 0 16 16 {5}  
+
+private method getGrabberWarmCycleParameters
+private method setGrabberWarmCycleParameters
+private method createGrabberWarmCycleParametersn
+
+(3) In file ScreeningTask.tcl
+ "Grabber Warm Cycle "
+
+
+
