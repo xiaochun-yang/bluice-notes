@@ -1,0 +1,197 @@
+Hwo to use a encoder as a counter for scintilation detector.
+
+Test with a pulse generator
+
+(1)connect pulse generator's pulse output (one side BNC and other side are two
+wires) to the 26 pin HD connector. one wire to pin 26 (MA+) another wire to
+pin 10 (digital ground). I was told to connect this pin to MA-(pin 8). But 
+somehow the encoder start to count even the pulse generator is off. 
+
+start the pulse generator ( can be set in any rate i.e. 100k)
+(2) commands used in the smart term.
+
+
+a) MTA=2.0   	set to stepper mode
+b) DEA=0	set the encoder counts to zero
+c) CEA=1	start counting (set to pulse mode)
+	wait for sometime
+d) CEA=0	stop counting (set to quardrature mode)
+e) TPA		read the encoder
+
+(3) resolution test
+use the following routine testing the counters
+#COUNT1
+MT2,2   'set both a b to stepping mode
+CE0,0   'STOP COUNTING ON A B COUNTER
+DE0,0	'SET COUNTER A B TO ZERO
+AT 0	'SET TIME REFERENCE POINT
+CE1,1	'START COUNTING ON A B
+AT 1000 'WAIT FOR 10 MS
+CE0,0  	'STOP COUNTING
+TPA,B	'READ COUNTER A B VALUE
+
+THE SERIALS REPEAT RESULTS AS FOLLOW (PULSE GENERATOR AT 100K HZ)
+1050	1049
+952	952
+1051	1051
+1047	1047
+972	971
+1051	1051
+
+10% ACUURACY IN TERM OF TIME IS ABOUT A MSEC ACCURCY.
+*  TP read encoder value. the position value should be read by RP command
+*  if the stepper has no encoder.
+
+The above test is only for stepping motor. In stepping motor case, only the 
+main encoder is being used. In order to use auxiliary encoder, the servo mode
+have to be setup as follow (use axis B as an example):
+
+#COUNT2
+MT,1	'set B to servo mode
+DP,0	'set main encoder to 0
+DE,0	'set auxiliary encoder to 0
+AT 0
+AT 1000
+TPB	'READ MAIN ENCODER VALUE
+TDB	'READ AUXILIARY ENCODER VALUE
+
+The connections are pin 26 to pulse from main encoder and pin 24 to pulse
+from auxiliary encode and use pin 10 as both gorund.
+
+
+
+Implementation the encoder counter in the Bluice program. 
+
+1. defind encoder in .config file as 
+
+galil4.encoder=encoder_counter0 0 1.0 COUNTER
+
+  In .dat file
+
+encoder_counter0
+12
+galil4 encoder_counter0
+0 1 1 1 1
+0 1 1 1 1 
+
+encoder_counter0_op
+11
+self encoder_counter_op
+0 1 1 1 1
+0 1 1 1 1
+
+counter0
+4
+self encoder_counter0_op 0 rtc1 standardVirtualIonChamber
+0 1 1 1 1
+0 1 1 1 1
+
+
+2. add the following in dmc2180API.h
+class Dmc2180CounterEncoder : public  Dmc2180_encoder {
+   public:
+   xos_result_t         get_current_position( dcs_scaled_t * position);
+   xos_result_t         set_position( dcs_scaled_t new_position );
+   };
+
+3. add the source codes of the functions get_current_position and set_position
+
+
+s_result_t Dmc2180CounterEncoder::set_position( dcs_scaled_t  newPosition ) {
+
+        int error_code;
+
+        /* set encoder counter to 0 */
+        sprintf( command, "DE%c=0", axisLabel );
+        controller_execute( command, &error_code,FALSE );
+        if ( error_code != 0 )
+        {
+                LOG_WARNING1("error_code: %d\n",error_code);
+
+                /* report failure */
+                return XOS_FAILURE;
+        }
+        /* time reference point */
+        sprintf( command, "AT 0" );
+        controller_execute( command, &error_code,FALSE );
+        if ( error_code != 0 )
+        {
+                LOG_WARNING1("error_code: %d\n",error_code);
+
+                /* report failure */
+                return XOS_FAILURE;
+        }
+        /* start to counting */
+        sprintf( command, "CE%c=1", axisLabel );
+        controller_execute( command, &error_code,FALSE );
+        if ( error_code != 0 )
+        {
+                LOG_WARNING1("error_code: %d\n",error_code);
+
+                /* report failure */
+                return XOS_FAILURE;
+        }
+        /* waiting counting time */
+        sprintf( command, "AT %ld", newPosition );
+        controller_execute( command, &error_code,FALSE );
+        if ( error_code != 0 )
+        {
+                LOG_WARNING1("error_code: %d\n",error_code);
+        
+                /* report failure */
+                return XOS_FAILURE;
+        }
+        /* stop the encoder counting */
+        sprintf( command, "CE%c=0", axisLabel );
+        controller_execute( command, &error_code,FALSE );
+        if ( error_code != 0 )
+        {
+                LOG_WARNING1("error_code: %d\n",error_code);
+
+                /* report failure */
+                return XOS_FAILURE;
+        }
+    return XOS_SUCCESS;
+}
+
+xos_result_t  Dmc2180CounterEncoder::get_current_position( dcs_scaled_t *position)
+        {
+                LOG_INFO("Entering relative encoder\n");
+        int error_code;
+        /* get position of axis */
+
+        sprintf(command, "TP%c", axisLabel );
+
+        controller_execute( command, &error_code, FALSE );
+
+        if (error_code == 0)
+                {
+                *position = (dcs_scaled_t)atof( lastResponse );
+                }
+        else
+                {
+                LOG_WARNING("Error getting current position\n");
+                return XOS_FAILURE;
+                }
+
+        return XOS_SUCCESS;
+        }
+
+4. make a operation scripts for counters in dcss/scripts/operations.
+
+proc encoder_counter0_op_initialize {} {
+}
+
+proc encoder_counter0_op_start { time } {
+    
+	#zero counter and start counter for time interval time_in_mill_sec and
+        #then stop the counter
+	set_encoder encoder_counter0 time
+
+	#get the counter from the encoder counter
+    	get_encoder encoder_counter0
+
+    	set encoderValue [wait_for_encoder encoder_counter0]
+    	return $encoderValue
+}
+

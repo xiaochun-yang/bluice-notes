@@ -1,0 +1,18 @@
+#return the singleton object
+body DCS::DeviceFactory::getObject {} {
+   if {$m_theObject == {}} {
+      #instantiate the singleton object
+      set m_theObject [[namespace current] ::#auto]
+   }
+
+   return $m_theObject
+}
+
+[namespace current] is producing the current class which is "DCS::Factory" 
+::#auto will add 0, 1, 2, .....
+
+So the object is created should be
+
+	DCS::DeviceFactory0(or 1 ,2 ...)
+
+

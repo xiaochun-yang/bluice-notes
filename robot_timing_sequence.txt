@@ -1,0 +1,28 @@
+In SampleMountingDevice.itcl
+
+function SampleMountingDevice::mountNextCrystal
+
+1.	set screening_mode
+
+2.	dismountCrystal 		 2.9sec  
+
+3.	wait 				 0.5sec 
+
+4.	remountCrystal 			 16.73sec (total including the following)
+	
+	a) move sample to mount position (0.1sec)
+	b) change sample address 	 (0.48sec)
+	c) mount crystal		 (16.14sec)
+
+
+There's big wait (over 2sec) between dismount and remount. 
+For check the timing for this, I did the follwoing
+
+1) put the timer at the end of the UNMOUNT pac file
+
+2) put the timer at the begining of the MOUNT pac file
+
+This could tell time delayed between the executions from dismount to mount.
+The result is ??
+
+

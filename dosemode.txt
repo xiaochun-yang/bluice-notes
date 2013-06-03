@@ -1,0 +1,58 @@
+i0 is used (hard coded in the dcss/scripts/operations/normalize.tcl) for
+the purpose of normalization of the xray-beam. 
+
+i2 is located at right after  the exposure shutter (no beam when shutter close).
+i1 is located at right before the exposure shutter (have beam even shutter close).
+i0 is located at right before the 2nd shutter.
+
+They are all read from galil controller. 
+
+In *.dat, there two parameters related to the does as the following
+
+dose_const
+13
+self standardString
+1 1 1 1 1
+0 1 1 1 1
+1327523089  i0                1               0.050       5
+clock      doseIonchamber  IntegrationTime  Threshold  StabilityRatio
+
+
+dose_data
+13
+self standardString
+0 1 1 1 1
+0 1 1 1 1
+{1265742668 12657.97282 0.15 0.15 0.0} 4.34 {1265742668 12657.97282 0.15 0.15 0.0} 4.35
+					i2 (changed)				     i2(old)
+
+The DoseModeControl.tcl in ../BluIceWidgets is for this.
+
+change -state from disable to normal to get dose mode can be clicked.
+itk_component add doseEnable {
+                        DCS::Checkbutton $ring.inv -text "Enable" -state
+normal
+                } {}
+
+
+normalize.tcl
+
+proc getStableIonCounts is to read ion chamber value.
+
+proc normalize_start {} {
+    variable dose_data
+
+    set counts [getStableIonCounts TRUE]
+
+    if { $counts == 0} {
+        return "Normalize Failed"
+    }
+
+    set situation [lindex $dose_data 2]
+    set dose_data [lreplace $dose_data 0 1 $situation $counts]
+
+    log_note "Beam Normalized with $counts counts."
+
+    return "normalized"
+}
+

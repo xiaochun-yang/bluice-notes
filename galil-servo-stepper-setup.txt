@@ -60,4 +60,13 @@ turned off whenever bluice is restarted. I have to do sh to turn it on
 manually. I did SH and then BN from the startterm. then it become ok.  
 	
 
+(4) Use the Galiltool software to get the correct PID
+The following is from chuck's email about how to enable the software
 
+"  I have that Design Kit, but I have not found it very useful.  You can
+probably invoke it by clicking on the tuning button.  It will tell you to
+upgrade the software.  If it asks for a passwork try "start".  Again,
+however, I do not find it very useful."
+
+I found the software is very useful anyway. The parameters are determined
+by the software are the right parameters. 

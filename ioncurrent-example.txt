@@ -1,0 +1,25 @@
+(1)	set m_deviceFactory [DCS::DeviceFactory::getObject]
+
+create a DeviceFactory object  "DCS::DeviceFactory# (# can be 1, 2, ...)
+
+(2)     set m_strBeamCurrent [$m_deviceFactory createString analogInStatus1]
+
+Create a device name as DCS::DeviceFactory#::analogInStatus1 ($m_strBeamCurrent)
+
+(3)      $m_strBeamCurrent register $this contents handleBeamCurrentChange
+
+Register "DCS::DeviceFactory#::analogInStatus1" as a "contents" of the callback function
+handleBeamCurrentChange (whenever DCS::DeviceFactory#::analogInStatus1 changes then the
+call back function will be called)
+
+
+The changes happened in the follwoing process. 
+In dhs_dmc2180.cc
+The analogInStatus1 is read from the galil controller and send to dcss
+
+sprintf(htos_message, "htos_set_string_completed analogInStatus1 normal %f %f %f %f %f %f %f %f",i0,i1,i2,i3,i4,i5,i6,i7);
+dhs_send_to_dcs_server( htos_message );
+
+In dcss (dcss/src/dcss_hardware_client.c)
+
+This value will be saved and brodcasted. 

@@ -1,0 +1,30 @@
+Galil smartterm software is used in the following test. this volatage is measured
+with voltage meter by hand. Axis e is used for servo.
+
+Set command 	position	volts	MG _OC
+OCE=500,0	420		5	0
+PRE=200
+BGE		620		0	1	TRIGGERED AT 500
+
+OCE=800,0 	620		5	0
+BGE		820		0	1
+
+
+OCE=1000,0 	820		5	0
+BGE		1020		0	1
+
+OCE=1218,0 	1020 		5	0
+BGE		1220		0	1
+
+OCE=1422,0 	1220		5	0
+BGE		1420		0	1	IT SUPPOSE TRIGGERED AT 1422. BUT IT TRIGGERED!??
+						(2 COUNTS LESS)
+OCE=1700,0 	1420		5	0
+BGE		1620		5	0	NOT TRIGGERED.
+BGE		1820		0	1	TRIGGERED
+
+OCE=2025,0	1820		5	0
+BGE		2020		5	0	NOT TRIGGERED (5 COUNTS LESS) 
+
+It seems there's a range for triggering. Within the range even it's not reached the position
+it will still trigger. 

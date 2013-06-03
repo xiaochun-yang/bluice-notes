@@ -1,0 +1,8 @@
+In the new "saveSystemSnapshot" function used in the file operations/collect_procedures.tcl
+and engine/util.tcl. 
+
+updateAllEncoders
+updateCommonIonChambers
+
+somehow having problems and need to be checked out. I commented both out
+for now. 

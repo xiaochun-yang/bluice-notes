@@ -1,0 +1,15 @@
+When use serial port of galil controller, the follwoing setup is the default.
+
+1) check the front panel for serial port speed setting.
+   if there's not jumpper on 38.4k and 19.2k, then the
+   default speed is 115200. so that the computer port
+   should set the same speed.
+
+2) use 9 pin straight serial cable (no null modem)
+
+3) set hardware handshaking on the computer side as well
+
+4) the usb-serial connection works.
+4) the usb-serial connection works.
+4) the usb-serial connection works.
+4) the usb-serial connection works.

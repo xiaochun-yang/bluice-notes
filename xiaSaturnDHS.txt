@@ -1,0 +1,53 @@
+In order to make the xiaSaturnDHS work, the following changes have been made.
+
+(1) In file handelSrc/xerxes.c
+
+Change variable *info to *Info because "info" is already defined in logging which library is
+used in the compilation.
+
+(2) Remove all the old files for both handelSrc ans src and recompile everything. 
+
+(3) must change the permission to RW to the usb port. It's in /proc/bus/usb/
+in my case it's in 001. /sbin/lsusb will list all the usb connections. check the
+device 701 (xiaSaturn) and see which bus it's on. the change the mode on that device.
+there might be a easier way to do it so that it only do it once. need to find it out.
+
+(4) the data read from the xiaSaturn controller from excitation script
+is for total 1024 channels. the index 1 is the percent of dead time.
+i.e. set percentDeadTime [lindex $result 1]  the $result is the data.
+excitation script automatically decide which channel is for the requested
+energy.
+
+(5) In *.dat add
+xiaSaturn
+3
+localhost 2
+
+acquireSpectrum
+11
+xiaSaturn acquireSpectrum
+0 1 1 1 1
+0 1 1 1 1
+
+madScan
+11
+self madScan
+0 1 1 1 1
+0 1 1 1 1
+
+madScanStatus
+13
+self fluorScanStatus
+0 1 1 1 1
+0 1 1 1 1
+0 {DCSS was reset} stroud /home/yangx 385hg Hg-L3 {12284.000 eV} {9988.8 eV}
+{1.000 s} {12284.589844 -17.096479 6.178682 12427.490234 -10.988670 10.682270
+9000.000000 -4.700000 6.400000 NULL/385hgscan 385hgsmooth_exp.bip
+385hgsmooth_norm.bip 385hgfp_fpp.bip}
+/home/yangx/temp/currentExcitationScan/BL7-1.bip
+
+
+(6) madScan in /dcss/scripts/operation
+
+
+

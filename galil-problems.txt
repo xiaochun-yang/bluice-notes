@@ -1,0 +1,5 @@
+Problem: Whenever press "abort" button, the galil dhs is being kicked off
+line.
+
+
+Solution: delete galil#.dat in (X4A). The galil.dat file is corruped.

@@ -1,0 +1,28 @@
+The detector default mode is seted in the following function in the file
+dcss/scripts/operations/runsConfig.tcl.
+
+For example, in the screening, reset parameter, it will reset the detector
+mode to the default. I am setting Q4CCD {return 1} for the fast mode as default.
+
+proc getDetectorDefaultModeIndex { } {
+    variable detectorType
+    set type [lindex $detectorType 0]
+        switch -exact -- $type {
+                Q4CCD   { return 0 }
+                Q315CCD { return 2 }
+                MAR345  { return 2 }
+                MAR165  { return 0 }
+                MAR325  { return 0 }
+                default { return 0 }
+        }
+}
+
+The actionListState in function of reset dcss/scripts/operations/SequenceDevice.tcl 
+has been changed from
+
+setConfig actionListStates [list 1 1 0 1 1 1 1 1 0 0 0 0 0 0 0 0]
+to
+setConfig actionListStates [list 1 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0]
+so that to disable the loop centering (don't have auto center now)
+
+

@@ -1,0 +1,149 @@
+//////
+go to blu-ice and web-ice wiki for the Authentication setup
+
+//////
+cbflib compiling
+
+1) go to CBFlib-0.8.1 dir
+2) copy Makefile Makefile_LINUX_64 Makefile
+3) make clean
+4) make install
+5) go back to cbflib and then go to lib
+6) mkdir linux64
+7) cd linux64
+8) cp CBFlib-0.8.1/lib/*.a .
+
+///////
+tcl_lib
+
+add #include <stdio.h> in the following file if errors ocurred in compiling
+src/linearRegression.cpp:19
+
+change <iostream.h> to <iostream> in file src/image_channel.c
+
+add #include <cstdlib>   in file src/decimalnum.h and src/findMax.cpp
+
+change #include <string> to <cstring> in file src/fitFunction.cpp
+
+add #include <stdio.h> in file src/decimalnum.cpp
+
+change CONST to const in the file src/imagePGM16.cc
+
+///////
+dcsmsg
+
+change #include <string> to <cstring> in file src/testTclList.cxx
+
+//////
+dcss
+
+line 215, 232 change "const char * " to "char *" src/dcss_broadcast.c
+
+line 602, 2400,2401,2712,2365 change "const char * " to "char *" in file src/dcss_gui_client.c
+
+change "STD_LIBS += -ltk -ltcl -litcl3.3" to "STD_LIBS += -ltk -ltcl -litcl3.4"
+in the makefile under dcss dir
+
+img1.2.4 compiling
+
+(1) put #define USE_COMPOSITELESS_PHOTO_PUT_BLOCK at begining of
+
+imgUtil.c
+imgUtil.h
+imgUtil.c
+imgUtil.c
+imgBMP.c
+imgGIF.c
+imgJPEG.c
+imgPNG.c
+imgPS.c
+imgWindow.c
+imgXBM.c
+imgXPM.c
+
+or I could do the following (get from the web)
+
+the Tk folks have changed the Tk_PhotoPutBlock interface in 8.4.x.
+to fix this, you have to add a TK_PHOTO_COMPOSITE_OVERLAY parameter
+to all three Tk_PhotoPutBlock calls in tkImaging.c.
+
+
+to make it work under older versions as well, change all
+    Tk_PhotoPutBlock(...);
+calls to
+
+    Tk_PhotoPutBlock(...
+#if (TK_MAJOR_VERSION == 8 && TK_MINOR_VERSION >= 4 || TK_MAJOR_VERSION > 8)
+        , TK_PHOTO_COMPOSITE_OVERLAY
+#endif
+    );
+
+(untested)
+
+(2) download "tcllib-1.11.1-4.fc15.noarch.rpm" and install it.
+It include MIME 1.5.4 libarary package
+
+alternatively (but also untested), you can add a
+#define USE_COMPOSITELESS_PHOTO_PUT_BLOCK
+to the top of the file (before including the Tcl and Tk libraries)
+
+(3) compiling release-5_1/dhs in files src/safeFile.cc
+change nextSlash = strstr( searchDirectory,"/");
+to  nextSlash = strstr( (char *)searchDirectory,"/");
+
+or redefine searchDirectory to char * not const char *
+
+(4) setenv EPICS_HOST_ARCH linux-x86_64
+
+(5) In impdhs change file src/AutochoochThread.cxx
+
+char* str =  strchr(m_pMsg->GetOperationArgument(), '{');
+to
+char* str = (char*) strchr(m_pMsg->GetOperationArgument(), '{');
+ src/AutochoochThread.cxx
+
+src/FileAccessThread.cxx:508
+from char* str = strrchr( pArgs, '{');
+to   char* str = (char*) strrchr( pArgs, '{');
+
+(7) when install ifort (intel fortran compiler), it will
+tells you that there's missing glib ... for 32 bits and
+your system is not supported. Just ignore all of it and
+go ahead to install the package.
+
+(8)  /etc/xinetd.d/imperson is set as following (it should change to /usr/local/dcs
+when dcs is installed in the root)
+
+ service imperson
+{
+        type            =UNLISTED
+        socket_type     =stream
+        protocol        =tcp
+        wait            =no
+        user            =root
+        server          =/usr/local/sbin/imperson.d
+        server_args     =host=localhost port=8080 securePort=8443 appName=SMBTest caFile=/home/yangx/release-5_1/dcsconfig/data/X4A.crt
+        port            =61001
+        disable         =no
+}
+
+(8) Download the new tcl_clibs from repository and recompile it. The old one from dkong yangx
+doesn't work with 64 bits somehow. It gives the following messages in the dcss log file
+
+couldn't load file "../../tcl_clibs/linux64/tcl_clibs.so": ../../tcl_clibs/linux64/tcl_clibs.so: undefined symbol: _ZL20PGM16Format_fileReadP10Tcl_InterpP12Tcl_Channel_PKcP7Tcl_ObjPviiiiii     while executing "load $DCS_DIR/tcl_clibs/$MACHINE/tcl_clibs.so dcs_c_library"     (file "../scripts/engine/scriptingEngine.tcl" line 169) {TCL_LOG  }
+
+(9) ******* It's important. I installed tkimg1.4. It always have segment fault error when 
+run ./bluice.tcl X4A. I checked the process. The eror occurs when it runs the
+line code "$m_rawImage configure -data $_imageData" at Video.tcl. The video
+image on the cameras could never displayed in the bluice gui. I could not
+figoured out what's going on. Finally I removed tkimg1.4. Then everything
+works. I checked Img lib. there's /usr/lib/Img1.2 still in there. (the one I
+removed was in /usr/lib64/tcl8.5/Img1.4). 
+
+The conclusion is the Img used in the bluice is not tkimg. 
+
+
+
+
+
+

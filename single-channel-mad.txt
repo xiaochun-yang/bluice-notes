@@ -1,0 +1,49 @@
+to use encoder as a counter for single channel analyzer with the flurence detector.
+
+The following modifications are made in the madScan.tcl under dcss/scripts/operations
+
+Original code as the following
+
+        for {set tryingTimes 0} {$tryingTimes < 3} {incr tryingTimes} {
+		.......
+		.......
+            set opHandle [start_waitable_operation excitationScan $startEnergy $endEnergy 1 $referenceDetector $scanTime_]
+            set result [wait_for_operation $opHandle]
+		.........
+		.........	
+        }
+
+
+Here add 
+
+set madscan 0  (for single channel)
+or
+set madscan 1  (for muliti-channels)
+
+        for {set tryingTimes 0} {$tryingTimes < 3} {incr tryingTimes} {
+                .......
+                .......
+		if {madscan} {
+            		set opHandle [start_waitable_operation excitationScan $startEnergy $endEnergy 1 $referenceDetector $scanTime_]
+            		set result [wait_for_operation $opHandle]
+		} else {
+			#put single channel statement here.
+                	if {$referenceDetector != ""} {
+                        	#start the real time clock
+                                read_ion_chambers $scanTime $referenceDetector
+                                wait_for_devices $referenceDetector
+                                set referenceCounts [get_ion_chamber_counts $referenceDetector]
+                	} else {
+                        	set referenceCounts 0
+                	}
+			set deadTimeRatio 0
+			set signalCounts [get_counter 
+
+		}
+                .........
+                .........
+        }
+
+
+
+

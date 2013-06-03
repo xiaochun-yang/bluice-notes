@@ -1,0 +1,9 @@
+move energy $value
+
+move will translate a DCS command "DCS_MOVE_MOTOR_MSG"
+
+once xpscan dhs receives this msg,it gose to ConsoleService::ThreadMethod()
+In the case DCS_MOVE_MOTOR_MSG:
+
+It will use "MFirst" motor which defined as "energy" in the X4A.dat file.
+the move to the new position. 

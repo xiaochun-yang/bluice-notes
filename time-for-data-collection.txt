@@ -5,7 +5,7 @@ the image overhead_time is where to set the image reading time
 to use to calculate the total data collection time.
 
 there's no value for Q4 detector. So it use the default value 0.
-I change the defaut value to 8 seconds as following:
+I change the defaut value to 4 seconds (fast mode) as following:
 
 if { $dType == "Q315CCD" } {
   set image_overhead_time 2.8
@@ -16,6 +16,6 @@ if { $dType == "Q315CCD" } {
 } elseif {$dType == "MAR345" && $dMode == 2} {
   set image_overhead_time 54.1
 } else {
-  set image_overhead_time 8
+  set image_overhead_time 4
 }
 

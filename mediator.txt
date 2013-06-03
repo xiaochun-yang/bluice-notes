@@ -1,0 +1,20 @@
+::mediator is being defined in the DcsWidgets/Component.tcl
+
+class objectMediator {....}
+
+#set up a singleton object mediator called ::mediator
+if { [info commands ::mediator] == "" } {
+        #set up a list of default motors
+        objectMediator mediator
+}
+
+
+usage:
+
+::mediator register $this $dataDevice contents handleDoseFactorChange
+		      |	     |	       |  		callback function 
+		      |	     |	     data content
+		      |    dataDevice (defined in .dat here is dose_data)
+		current class
+
+Once it registered, when data contents changes, it will call call back function.	
