@@ -1,0 +1,18 @@
+capture the stack trace with gdb when the segfault happens.
+(from christ Neilson)
+
+At tcsh
+
+> limit coredumpsize unlimited
+
+> run the program
+
+> when it segfaults,
+
+> gdb …/your_server_binary   core*  sometimes the core file is core, sometimes core.pid
+> gdb> where
+
+  you’ll get a core dump stack trace, with line numbers, etc.
+
+  gdb> quit
+
