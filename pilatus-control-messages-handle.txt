@@ -1,0 +1,21 @@
+there are following messages from detector server which handled by pilatusDHS
+
+1) N images set to %d
+
+2) Frames per image set to %d
+
+3) imag %d
+
+4) Exposure time set to: %d
+
+5) Starting %f second background (non triggering images)
+
+6) Starting externally triggered exposurer(s)
+
+Need to study all the cases 
+
+
+also where to update the status (see collectShutterless.tcl) so that will change the
+status from "Detector error" to "Detector normal".
+
+Need to set update in the detector server as well.

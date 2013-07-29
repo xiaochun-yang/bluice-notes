@@ -1,0 +1,26 @@
+Problem: Once the pilatus detector has error, It's always being displayed
+on the buttom of the system status bar even detector works normally. 
+
+Solution: add $dcss sendMessage "htos_operation_completed detector_stop 1.5 normal" in 
+ if { $returnStatus == "OK" } {
+            switch $returnCode {
+                7 {
+
+		$dcss sendMessage "htos_operation_completed detector_stop 1.5 normal"
+		  }
+
+to make sure it send the "detector_stop" normal message to DCS once the detectorstop normally. This is because this is tight to the following code in dcss/scripts/engine/message_handlers.tcl
+
+    if {$operationName == "detector_stop" && [isString detector_status]} {
+        variable ::nScripts::detector_status
+        if {$status == "normal"} {
+            set display Ready
+        } else {
+            set display Error
+        }
+
+        set detector_status "Detector $display"
+    }
+
+In order to change from "error" to "ready" the detector_stop set to "normal"
+is needed. 

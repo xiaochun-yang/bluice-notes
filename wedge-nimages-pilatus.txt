@@ -1,0 +1,5 @@
+in file DcsWidgets/RunSequenceCalculator.tcl
+
+there's a funciton called RunSequenceCalculator::getMotorPositionsAtIndex { index }
+
+calculate the number of images per frame to run. 
