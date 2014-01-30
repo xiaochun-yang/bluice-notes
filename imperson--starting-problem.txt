@@ -1,0 +1,10 @@
+the imperson server sometimes won't start because xinetd doesn't start.
+
+Somehow xinetd won't start at the begining of the boot. I have to manually 
+start it.
+
+solution: making the xinetd start at the boot. Do the following:
+
+1) to be the super
+2) /sbin/chkconfig --level 2345 xinetd on
+ 

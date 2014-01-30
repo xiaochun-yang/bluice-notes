@@ -127,6 +127,17 @@ when dcs is installed in the root)
         disable         =no
 }
 
+make sure xinetd is running
+do
+	ps -ef|grep xinetd
+to check it. if it's not runing then the imerson will not run. So you need
+to run the xinetd. then use the ./test.csh in the ../imperson_cpp to see
+things ok. If the test.csh still can not be past. do the following
+0) ps -e|grep xinetd. if it's not started, start it. 
+1) shuttomcat
+2) starttomcat
+3) then start ./test.csh
+
 (8) Download the new tcl_clibs from repository and recompile it. The old one from dkong yangx
 doesn't work with 64 bits somehow. It gives the following messages in the dcss log file
 
@@ -142,8 +153,58 @@ removed was in /usr/lib64/tcl8.5/Img1.4).
 
 The conclusion is the Img used in the bluice is not tkimg. 
 
+(10) for tls1.6, use tls-1.6-4-x86_64.pkg.tar.xz to extract all the file and
+then move to /usr/lib
 
+(11) extract jdk-7-linux-x64.tar.gz in the /usr/local/dcs
 
+(12)For compiling MyAuthServer file. the "makefile" dose not have compiling
+x86_64
+option. So manually edit the makefile and add the the 64bit compiling option.
 
+ifeq ($(MACHINE),linux64)
 
+########################################################
+# linux64
+########################################################
 
+ifeq ($(PURIFY),TRUE)
+CC      = g++
+CXX     = g++
+LINK    = purify g++
+else
+CC      = g++
+CXX     = g++
+LINK    = g++
+endif
+CFLAGS  += -c -DLINUX -fexceptions -pthread -D_REENTRANT
+CPPFLAGS =
+LDFLAGS =
+STD_LIBS += -lm -lrt -lpthread -lc
+
+# endif linux64
+endif
+
+(13)
+change makefile in the xpscandhs directory
+
+        a. from ifeq ($(MACHINE),linux)
+
+           to   ifeq ($(MACHINE),linux64)
+
+        b.  from ifeq ($(MACHINE),linux)
+            to   ifeq ($(MACHINE),linux64)
+
+        c.  from ifeq ($(OSTYPE),linux) MACHINE = linux
+            to   ifeq ($(OSTYPE),linux64) MACHINE = linux64
+
+        change ALL linux to linux64
+
+(14) make "X4A, userLog/X4A /dcss/dbmapfile /dcss/linux64 epicsgw
+impdhs/linux64 xpscanndhs/linux64
+/dcsconfig/data" to be all read,write. use chmod 777 to change them
+
+(15)  change "dkong" to "yangxc" in all the
+/usr/local/dcs/ccd_dist/LOGIN_files/log_x4a_api_418
+
+Also do the "chmod -R 777 ccd_dist" make all the files read/write

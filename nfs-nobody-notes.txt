@@ -1,0 +1,22 @@
+after set up nfs the display of the /storage appears as the following
+
+drwxr-xr-x.  2 nobody nobodyc     6 Jul 10  2009 namboodiri
+drwxr-xr-x.  5 nobody nobody     45 Jun 16  2010 nesg
+
+checked /var/log/messages. It has the following message
+
+ nss_getpwnam: name 'nysbc@nsls.bnl.gov' domain 'localdomain': resulting localname '(null)
+
+solution:
+
+edit the file /etc/idmapd.conf
+change Domain = localdomain
+
+to     Domain = nsls.bnl.gov
+
+reboot the computer. Then display the /storage and then it shows the following
+
+drwxr-xr-x. 14 nysbc  users   4096 Dec  9 11:35 Qinglian
+drwxr-xr-x.  3 nysbc  users     36 Jun 12  2013 robinson
+drwx------. 60 nysbc  users   4096 Jun 12  2013 rudino
+
