@@ -1,0 +1,36 @@
+1) need to install libusb-dev
+
+2) Have the foloowing changes in Makefile in the ../xiaSaturnDHS/handelSrc
+
+< 	gcc $(USR_CFLAGS) $(USR_CFLAGS_x86_64) -c -fPIC $(handel_SRCS) $(handel_SRCS_x86_64)  
+< 	ar rcs linux/libhandel.a $(handel_OBJS) $(handel_OBJS_x86_64) 
+---
+> 	gcc $(USR_CFLAGS) $(USR_CFLAGS_Linux) -c -fPIC $(handel_SRCS) $(handel_SRCS_Linux)  
+> 	ar rcs linux/libhandel.a $(handel_OBJS) $(handel_OBJS_Linux) 
+
+3) Have the following changes in the makefile in ../dcs/xiaSaturnDHS
+< ifeq ($(MACHINE),linux64)
+---
+> ifeq ($(MACHINE),linux)
+180c173
+< USB_DIR = /usr/lib64
+---
+> USB_DIR = /usr/lib
+
+
+
+how to connect the usb to xiaSturn box.
+
+1) connect usb to the usb connect on the box
+2) turn the box power on
+3) connect usb to the computer
+4) check usb with command lsusb and see the xiaSturn is connected
+5) if not, disconnect the usb from the computer and connect it again
+6) repeat the 5) until the xia is showed on the lsusb
+
+
+So far, xiaSaturnDhs only works as in the root. Dosen't work on nysbc. I don't
+know why???
+
+ 
+

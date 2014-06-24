@@ -9,8 +9,61 @@ used in the compilation.
 
 (3) must change the permission to RW to the usb port. It's in /proc/bus/usb/
 in my case it's in 001. /sbin/lsusb will list all the usb connections. check the
-device 701 (xiaSaturn) and see which bus it's on. the change the mode on that device.
+device 701 (xiaSaturn) and see which bus it's on. the change the mode to "rw" on that device.
 there might be a easier way to do it so that it only do it once. need to find it out.
+
+(3+) somehow it only work with the root as following
+in root user
+in ../xiaSaturnDhs/linux/
+execute ./xiaSaturn X4A
+******need to find out why"
+
+
+changed /etc/rc.sysinit from
+if [ ! -d /proc/bus/usb ]; then
+        modprobe usbcore >/dev/null 2>&1 && mount -n -t usbfs /proc/bus/usb
+/proc/bus/usb 
+else
+        mount -n -t usbfs /proc/bus/usb /proc/bus/usb 
+fi
+
+to
+if [ ! -d /proc/bus/usb ]; then
+        modprobe usbcore >/dev/null 2>&1 && mount -n -t usbfs /proc/bus/usb
+/proc/bus/usb -o devgid=100,devmode=664
+else
+        mount -n -t usbfs /proc/bus/usb /proc/bus/usb -o
+devgid=100,devmode=664
+fi
+
+SOOOOOOOOOLVED!!!!!!!
+The /etc/rc.sysinit file change is the right thing to do in order to change
+the permission.
+
+I found the program stucked in "usb_set_configuration" function the usblib_linux.c
+it suppose to return "0". But it always return "-1" except in the root
+account. no matter what permission I change for the xiaSaturn device in the
+/proc/bus/usb/....   I made small program called usb_test.c to test. It's the
+same error. However when I keep the xiaSaturn cable connected and reboot the 
+computer. Then it works on non root account. So that means the permissions I 
+changed somehow was not effected even though it looks being changed. I tried 
+unplug the usb cable and plug the cable back. It still work. 
+
+Need a way to find how to restart the usb device without reboot the computer.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 (4) the data read from the xiaSaturn controller from excitation script
 is for total 1024 channels. the index 1 is the percent of dead time.
@@ -45,6 +98,10 @@ self fluorScanStatus
 9000.000000 -4.700000 6.400000 NULL/385hgscan 385hgsmooth_exp.bip
 385hgsmooth_norm.bip 385hgfp_fpp.bip}
 /home/yangx/temp/currentExcitationScan/BL7-1.bip
+
+(6) saturn.ini should be in the ../linux64 directory (same as the executable
+xiaSatuen)
+
 
 
 (6) madScan in /dcss/scripts/operation
