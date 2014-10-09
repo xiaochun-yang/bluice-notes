@@ -29,6 +29,10 @@ add #include <stdio.h> in file src/decimalnum.cpp
 
 change CONST to const in the file src/imagePGM16.cc
 
+change the following
+char*fileName to const char *fileName in function PGM16Format_fileMatch()
+and function PGM16Format_fileRead()
+
 ///////
 dcsmsg
 
@@ -141,7 +145,13 @@ things ok. If the test.csh still can not be past. do the following
 (8) Download the new tcl_clibs from repository and recompile it. The old one from dkong yangx
 doesn't work with 64 bits somehow. It gives the following messages in the dcss log file
 
-couldn't load file "../../tcl_clibs/linux64/tcl_clibs.so": ../../tcl_clibs/linux64/tcl_clibs.so: undefined symbol: _ZL20PGM16Format_fileReadP10Tcl_InterpP12Tcl_Channel_PKcP7Tcl_ObjPviiiiii     while executing "load $DCS_DIR/tcl_clibs/$MACHINE/tcl_clibs.so dcs_c_library"     (file "../scripts/engine/scriptingEngine.tcl" line 169) {TCL_LOG  }
+changed followint in the makefile
+from 
+TCL_LIB = /usr/local/lib/libtcl8.3$(SHAREDEXT) /usr/local/lib/libtk8.3$(SHAREDEXT)
+TCL_LIB = -ltcl8.4 -ltk8.4
+to
+TCL_LIB = /usr/lib64/libtcl8.5$(SHAREDEXT) /usr/lib64/libtk8.5$(SHAREDEXT)
+TCL_LIB = -ltcl8.5 -ltk8.5
 
 (9) ******* It's important. I installed tkimg1.4. It always have segment fault error when 
 run ./bluice.tcl X4A. I checked the process. The eror occurs when it runs the
@@ -208,3 +218,17 @@ impdhs/linux64 xpscanndhs/linux64
 /usr/local/dcs/ccd_dist/LOGIN_files/log_x4a_api_418
 
 Also do the "chmod -R 777 ccd_dist" make all the files read/write
+
+*****
+(14)
+add the following line in file pkgIndex.tcl in../dcs/DcsWidgets
+
+package ifneeded dict 8.5 {package provide dict 8.5}
+
+This will solve the problem of error for not finding the dict gpackage.
+dict package is included in the tcl8.5. 
+
+(15) BluIceWidgets/Resolution.tcl
+change catch {load /usr/local/dcs/tcl_clibs/linux/tcl_clibs.so dcs_c_library}
+to     catch {load /usr/local/dcs/tcl_clibs/linux64/tcl_clibs.so dcs_c_library}
+

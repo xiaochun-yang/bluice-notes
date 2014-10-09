@@ -1,0 +1,43 @@
+
+To Start Libera IOC from a linux computer
+
+1) telnet 192.168.1.100  (libera default IP)
+	user: root
+	pswd:Jungle
+
+2) Must change the default date (1970). Epics doesn't work on that early date. 
+	date -s "2 Aug 2014 18:00:00"
+
+3) run	/opt/epics-libera/runapp.sh
+
+
+To install edm and run libera predeveloped edm
+
+1) download edm and install it under /usr/local/epics/extensions/src
+
+2) compile them and download all required fonds
+
+3) Install Libera edm in the local account (pbpp.tar.gz)
+  
+	for example: install it in /home/yangx/pbpp...
+
+4) Setup envionment for libera edm 
+(put the following lines in the .cshrc or .tcshrc file)
+(use the edm.sh file as the enviromental parameters reference)
+
+setenv EPICS_TOPDIR /usr/local/epics/extensions
+setenv EDMOBJECTS /home/yangx/pbpp/edm/prefs
+setenv EDMPVOBJECTS /home/yangx/pbpp/edm/prefs
+setenv EDMFILES /home/yangx/pbpp/edm/prefs
+setenv EDMDATAFILES /home/yangx/pbpp/edm
+
+setenv LD_LIBRARY_PATH "/usr/local/epics/extensions/src/edm/choiceButton/O.linux-x86_64:/usr/local/epics/extensions/src/edm/util/O.linux-x86_64:/usr/local/epics/extensions/src/edm/calcPv/O.linux-x86_64:/usr/local/epics/extensions/src/edm/locPv/O.linux-x86_64:/usr/local/epics/extensions/src/edm/epicsPv/O.linux-x86_64:/usr/local/epics/extensions/src/edm/lib/O.linux-x86_64:/usr/local/epics/extensions/src/edm/imagelib/O.linux-x86_64:/usr/local/epics/extensions/src/edm/baselib/O.linux-x86_64"
+
+xset fp+ /usr/share/X11/fonts/100dpi
+xset fp+ /usr/share/X11/fonts/75dpi
+
+
+5) Run libera edm as follows
+
+	edm -m DEVICE=LIBERA01 -x main.edl
+
