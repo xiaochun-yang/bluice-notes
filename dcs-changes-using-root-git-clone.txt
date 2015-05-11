@@ -1,0 +1,22 @@
+when use root user to clone new dcs under /usr/local
+
+The following directories need to be changed
+by using "chmod -R 777 dir"
+
+1) dcsconfig/data
+
+2) dcss/linux64
+
+3) epicsgw
+
+4) PilutusDhs
+
+5) impdhs/linux64
+
+6) X4A
+
+7) ccd_dist
+
+8) robot/linux64
+
+9) xpscandhs/linux64

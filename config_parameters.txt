@@ -10,7 +10,7 @@ self standardString
 0 0 0 0 0
 0 0 0 0 0 0 0 1 0 0 0	7th number (start with 0) is for enable the display of calculate data collection timer
 
-
+--------------------------------------------------------------------
 sil_config
 13
 self standardString
@@ -18,12 +18,25 @@ self standardString
 0 1 1 1 1
 1 1 1 1 	number 0--add image 1--analyze image 2--autoindex 3--reorient
 
+the first  1 enable add_image           1--yes 0--no
+the second 1 enable analyze_image       1--yes 0--no
+the third  1 enable auto index          1--yes 0--no
+the fouth  1 enable  reorient           1--yes 0--no
+----------------------------------------------------------------
 collect_default
 13
 self collect_default
 1 1 1 1 1
 0 0 0 0 0
 1 3 60 600 50 100 number 3 (600) Max exposure time can be set in the data collection
+
+the first   number 1   is the default delta?
+the second  number 3   is the default exposure time?
+the third   number 60  is the default attenuation
+the fourth  number 1   is minimum exposure time
+the fifth   number 120 is the max exposure time in the data collection
+the sixth   number 50  is the minimum attenuation
+the seventh number 100 is the maximum attenuation
 
 For the CONFIG file
 *******************
@@ -41,5 +54,19 @@ galil1.shutter=shutter2         2       closed
                                      Channel State [ 0--closed(CB) 1--open(SB)]
 
 It's only needed to be defined here. Program will take care the rest.
+
+
+------------------------------------------------------------------------
+servo motor definition
+
+servo 		name     axis	PID KD   KP    KI    motorStateBetweenMove	
+galil1.servo=camera_zoom w     3291      221   32     servo or off
+							
+motorStateBetweenMoves has two state: servo/off
+servo "SH" command will be issued after the move
+off   "MO" command will be issued after the move
+
+
+
 
 

@@ -6,5 +6,8 @@ start it.
 solution: making the xinetd start at the boot. Do the following:
 
 1) to be the super
-2) /sbin/chkconfig --level 2345 xinetd on
+2) go to /etc/xinetd.d 
+3) edit telnet and change "disable = yes" to "disable = no"
+
+so this way, the xinet is being started by telnet at system startup 
  

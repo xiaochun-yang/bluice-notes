@@ -2,11 +2,16 @@
 
 2) Have the foloowing changes in Makefile in the ../xiaSaturnDHS/handelSrc
 
+<	-mkdir linux64
+>	-mkdir linux
+
 < 	gcc $(USR_CFLAGS) $(USR_CFLAGS_x86_64) -c -fPIC $(handel_SRCS) $(handel_SRCS_x86_64)  
-< 	ar rcs linux/libhandel.a $(handel_OBJS) $(handel_OBJS_x86_64) 
+< 	ar rcs linux64/libhandel.a $(handel_OBJS) $(handel_OBJS_x86_64) 
 ---
 > 	gcc $(USR_CFLAGS) $(USR_CFLAGS_Linux) -c -fPIC $(handel_SRCS) $(handel_SRCS_Linux)  
 > 	ar rcs linux/libhandel.a $(handel_OBJS) $(handel_OBJS_Linux) 
+
+
 
 3) Have the following changes in the makefile in ../dcs/xiaSaturnDHS
 < ifeq ($(MACHINE),linux64)
@@ -16,6 +21,17 @@
 < USB_DIR = /usr/lib64
 ---
 > USB_DIR = /usr/lib
+
+(4) Chang to the following in the src/xiaSaturnAPI.cxx
+
+status = xiaGetRunData(XIA_SATURN_CHANNEL, "mca_length", &mcaLength);
+
+to 
+
+status = xiaGetRunData(XIA_SATURN_CHANNEL, "mca_length", (void *)&mcaLength);
+
+for 32bit version, it's ok. but for 64bit, it have to do the (void *) cast
+otherwise it get a rediculus big number.
 
 
 
