@@ -48,6 +48,26 @@ line 602, 2400,2401,2712,2365 change "const char * " to "char *" in file src/dcs
 change "STD_LIBS += -ltk -ltcl -litcl3.3" to "STD_LIBS += -ltk -ltcl -litcl3.4"
 in the makefile under dcss dir
 
+add include<stddef.h> and <stdio.h> in the dcss_database.c file. Otherwise
+it will have error on the function "offsetof".
+
+**** add -lcrypto in the makefile of auth_client in order to compile the
+program.
+also in imperson_cpp and dcss
+
+Otherwise it will give the following error somehow
+/usr/bin/ld: ../http_cpp/linux64/libhttp-cpp.a(SSLCommon.o): undefined
+reference to symbol 'EVP_PKEY_CTX_free@@libcrypto.so.10'
+/usr/bin/ld: note: 'EVP_PKEY_CTX_free@@libcrypto.so.10' is defined in DSO
+/lib64/libcrypto.so.10 so try adding it to the linker command line
+/lib64/libcrypto.so.10: could not read symbols: Invalid operation
+collect2: error: ld returned 1 exit status
+
+
+***********5/4/2016******* I just tared Img1.2.4 directory from /usr/lib and copied it
+to the same dire and /usr/lib64. Then everything works. I have hard time
+to compiling it anyway.
+
 img1.2.4 compiling
 
 (1) put #define USE_COMPOSITELESS_PHOTO_PUT_BLOCK at begining of
@@ -232,3 +252,6 @@ dict package is included in the tcl8.5.
 change catch {load /usr/local/dcs/tcl_clibs/linux/tcl_clibs.so dcs_c_library}
 to     catch {load /usr/local/dcs/tcl_clibs/linux64/tcl_clibs.so dcs_c_library}
 
+****** for redhat 7+ compliing *****
+it might need to add "-lcrypto" option for compiling in the makefile for dcss and
+some dhs modules. This is no need for centos 6+ version. 

@@ -1,0 +1,38 @@
+only inlight light works under the on axis camera tab for now.
+
+I have made the following changes to make inline light works for me
+
+1) in Lights.tcl under ../BluiceWidgets, commented out the following lines
+since I don't have ssrl "io card" no need for "m_objBackLight"
+ 
+#yangx        $itk_component(back_light) addInput \
+#yangx        "$m_objBackLight status inactive {Supporing Device}"
+
+2) comment out following in the config file
+#galil1.input=5 inlineLightStatus INSERTED yes no
+#galil1.input=6 inlineLightStatus REMOVED yes no
+ 
+change inlineLightStatus from galil input to string in the dat file
+from 
+inlineLightStatus
+13
+galil1 inlineLightStatus
+0 1 1 1 1
+0 1 1 1 1
+INSERTED yes REMOVED no
+
+to
+inlineLightStatus
+13
+self standardString
+0 1 1 1 1
+0 1 1 1 1
+INSERTED yes REMOVED no
+
+3)made changes in inlineLightControl.tcl under ../scripts/operation
+see the label #yang
+
+4)made changes in beamstop_z_auto.tcl   under ../scripts/devices
+
+
+

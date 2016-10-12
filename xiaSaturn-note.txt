@@ -1,0 +1,9 @@
+1) Changed Makefile for handelSrc which will be good for both saturn and mercury. 
+take out the -DEXCLUDE_MERCURY and add -DEXCLUDE_STJ
+STJ is not being used in both saturn and mercury.
+
+2)changed function name "info" to "myinfo" in the file logger.c and logger.h. This is due to
+confilict with "info" defined in the file xerxes.c of the handelSrc. It causes compiling error.
+
+3)Need to change mode 777 for /dev/bus/usb. Otherwise it can't be run from the user "nysbc".
+The default mode can only be accessed by the root. Need a way to change this automatically. 

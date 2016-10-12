@@ -1,0 +1,15 @@
+Precedures to create a gif file for Bluice
+
+1) use Inkscape (window 7)
+
+	a). draw a graph in layer 1
+	    edit the property page to set up the size of the graph
+	b). create 2 layer as backgound (RGB 211 211 211 255)
+
+2) save as png file
+
+3) transfer to linux machine
+
+4) use GIMP and open png file
+
+5) save as the file as gif

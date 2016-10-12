@@ -12,10 +12,18 @@ Register "DCS::DeviceFactory#::analogInStatus1" as a "contents" of the callback 
 handleBeamCurrentChange (whenever DCS::DeviceFactory#::analogInStatus1 changes then the
 call back function will be called)
 
+ion chambers are reading are iitiated from the function "dmc2180_unsolicited_handler" when galil script started
+it execute the scripts "#ION" in the galil controller and read all the ion chamber value continuously. Then
+send out with message "dtoh_ion_chamber" (it maps the DHS_MESSAGE_ION_CHAMBER);
+
 
 The changes happened in the follwoing process. 
-In dhs_dmc2180.cc
 The analogInStatus1 is read from the galil controller and send to dcss
+
+In dhs_dmc2180.cc
+if (messageID == DHS_MESSAGE_ION_CHAMBER) {
+	then read all the ion chambber values
+}
 
 sprintf(htos_message, "htos_set_string_completed analogInStatus1 normal %f %f %f %f %f %f %f %f",i0,i1,i2,i3,i4,i5,i6,i7);
 dhs_send_to_dcs_server( htos_message );

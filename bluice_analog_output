@@ -1,0 +1,21 @@
+dhs/src/dhs_messages.h
+add
+	DHS_MESSAGE_MOTOR_START_ANALOG
+
+dhs/src/dhs_motor_messages.cc
+add
+        if(strcmp(gToken[2], "analog")==0)
+        {
+                MESSAGE_ID = DHS_MESSAGE_MOTOR_START_ANALOG;
+                LOG_WARNING("yang before home messages sends over");
+        }
+dhs/src/dhs_dmc2180.cc
+add
+	case DHS_MESSAGE_MOTOR_START_ANALOG:
+        return dmc2180_motor_start_analog( (dhs_motor_start_move_message_t *)message, semaphore );
+
+	dmc2180_motor_start_analog function
+
+0) need to check dmc2180_motor_start_script function to see if can be use
+1) need to write dmc2180_motor_start_analog function
+2) need to add "analog" in /DcsWidgets/Device.tcl
