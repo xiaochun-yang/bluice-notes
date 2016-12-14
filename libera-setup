@@ -41,3 +41,13 @@ xset fp+ /usr/share/X11/fonts/75dpi
 
 	edm -m DEVICE=LIBERA01 -x main.edl
 
+6)    for more liberas just change DEVICE=LIBERA0#
+
+7) need to set enviroment as 
+setenv EPICS_HOST_ARCH linux-x86_64
+setenv EPICS_CA_ADDR_LIST "192.168.1.100"
+setenv EPICS_CA_AUTO_ADDR_LIST NO
+setenv EPICS_BASE /usr/local/epics/base
+setenv LD_LIBRARY_PATH /usr/local/epics/base/lib/linux-x86_64
+
+192.168.1.100 is the libera IP address

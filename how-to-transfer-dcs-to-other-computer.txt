@@ -1,0 +1,26 @@
+Here is the procedures to setup a dcs in a new computer
+
+1) tar dcs in /usr/local
+
+2) Copy /usr/local/dcs/imperson_cpp/linux/imperson.d to /usr/local/sbin/imperson.d
+
+3) create file /etc/xinetd.d/imperson with the following content:
+service imperson
+{
+	disable	= no
+        type            =UNLISTED
+        socket_type     =stream
+        protocol        =tcp
+        wait            =no
+        user            =root
+        server          =/usr/local/sbin/imperson.d
+        server_args     =host=localhost port=8080 securePort=8443 appName=SMBTest caFile=/usr/local/dcs/dcsconfig/data/X4A.crt
+        port            =61001
+}
+
+4) cd Authentication_Public/c
+cp pam_authenticate /usr/local/sbin
+
+5) cp Authentication/c/web-auth /etc/pam.d
+
+6) search all the file with old hostname and relpace them with the new ones 

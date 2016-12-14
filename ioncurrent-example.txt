@@ -30,4 +30,37 @@ dhs_send_to_dcs_server( htos_message );
 
 In dcss (dcss/src/dcss_hardware_client.c)
 
-This value will be saved and brodcasted. 
+This value will be saved and brodcasted.
+
+
+New addions
+ I can defined analogInStatus1, analogInStatus2,....
+
+In the scripts file Instead of output 
+ MG{EF} "dtoh_ion_chamber",A0,A1,A2,A3,A4,A5,A6,A7
+It should output
+ MG{EF} "dtoh_ion_chamber",#,A0,A1,A2,A3,A4,A5,A6,A7
+# is a integer to represent which analogInStatus
+
+In the dhs_dmc2180.cc function
+It will be check the # first then to assign which analogInStatus#
+
+ if (messageID == DHS_MESSAGE_ION_CHAMBER) {
+char commandToken[200];
+char strname[20];
+int  index;
+float i0,i1,i2,i3,i4,i5,i6,i7;
+      strcpy(strname,"analogInStatus");
+      sscanf( ((const char*) message),"%s %d %f %f %f %f %f %f %f %f",commandToken,&index,&i0,&i1,&i2,&i3,&i4,&i5,&i6,&i7);
+      // sprintf(htos_message, "htos_report_ion_chambers %f i0 %f i1 %f i2 %f e_lvdt_m1_ubend %f e_lvdt_m1_dbend %f",tm,i0,i1,i2,i3,i4);
+      strcat(strname,&inedex);
+      sprintf(htos_message, "htos_set_string_completed strnanme normal %f %f %f %f %f %f %f %f",i0,i1,i2,i3,i4,i5,i6,i7);
+.........
+}
+
+
+
+
+ 
+
+ 
