@@ -1,0 +1,6 @@
+I transfer the new .dat file to new control machine
+however even I run ./dcss ID-19 -r ../../dcsconfig/data/ID-19.dat
+the values for some motors are still not updated from the new .dat file
+I have to delete all the galil#.dat files from ID-19 directory/ Then
+run the ./dcss ID-19 -r ... and update the new values.
+ 

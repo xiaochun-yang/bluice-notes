@@ -1,10 +1,23 @@
 how to setup encoder as counter
+In galil side, it need to set encoder as pulse and direction CE=5. Also
+set MT=1 as a servo so that the encoder can have higher frequency 23Mhz?
+need a script as following
+InteTime
+#ECOUNTS
+Finish=0
+DE=0;		'set encoder to zero
+WT InteTime;	'integration time
+Counts= _TD;	'read encoder counts
+Finish=1;	'ready to read from the program
+EN
+///////////////////////////////////////////////////////////////////////
+In Bluice side
 
 1) in config file add
 
-galil2.encoder=counter1 1 1 RELATIVE (or ABSOLUTE)
+galil2.encoder=counter1 1 1 COUNTER //new parameter just like RELATIVE
 ........
-
+//////////////////////////////////////////////////////////////////////
 2) In dat file add
 
 counter1
@@ -25,6 +38,7 @@ self counter1_op 0 rtc1 standardVirtualIonChamber
 0 1 1 1 1
 0 1 1 1 1
 
+//////////////////////////////////////////////////////////////////////////
 4) add counter1_op.tcl script in the ../dcss/scripts/operations
 
 #counter1_op.tcl
@@ -33,7 +47,7 @@ proc counter1_op_initialize {} {
 
 proc counter1_op_start { time_in_second } {
     #reset the encoder to 0 first
-    set_encoder counter1 0
+    set_encoder counter1 time_in_second
 
     #wait for time_in_second, then read the counter1
 
@@ -41,7 +55,84 @@ proc counter1_op_start { time_in_second } {
     set encoderValue [wait_for_encoder counter1]
     return [expr $encoderValue]
 }
+///////////////////////////////////////////////////////////////////////////
+5) In dhs/src/dhs_dmc2180.cc
+
+Add the following
+       } else if ( strcmp(encoderTypeStr,"COUNTER") == 0 ) {
+         encoder = &dmc2180.counterEncoder	
+
+In dmc2180API.h file add the followings
+
+#define DMC2180_MAX_COUNTER_ENCODERS 8
+
+class Dmc2180CounterEncoder : public  Dmc2180_encoder {
+   public:
+   xos_result_t         get_current_position( dcs_scaled_t * position);
+   xos_result_t         set_position( dcs_scaled_t new_position );
+   };
+
+Dmc2180CounterEncoder counterEncoder[DMC2180_MAX_COUNTER_ENCODERS]
 
 
+//////////////////////////////////////////////////////////////////////////
+6) in dhs/src/dmc2180API.cc add the following functions
 
- 
+// This function setup the integration time of the counter
+xos_result_t Dmc2180CounterEncoder::set_position(dcs_scaled_t newPosition) {
+        /* local variables */
+        int error_code;
+	int IntegrationTime;
+
+	IntegrationTime = 1000*newPosition;
+        LOG_INFO1("Yangx Integration Time : %d\n",IntegrationTime);
+
+        sprintf(command, "InteTime=%d", IntegrationTime);
+        /* construct and send message to dmc2180 */
+        controller_execute(command, &error_code, FALSE );
+
+        LOG_INFO1("error_code: %d\n",error_code);
+
+        /* check for errors */
+        if (error_code != 0) {
+                LOG_WARNING1("error_code: %d\n",error_code);
+
+                /* report failure */
+                return XOS_FAILURE;
+        }
+
+        /* report success */
+        return XOS_SUCCESS;
+}
+
+#include <unistd.h>
+// This function read the encounder counts from the script
+s_result_t Dmc2180CounterEncoder::get_current_position(dcs_scaled_t * position) {
+
+        LOG_INFO("Entering counter encoder\n");
+        int error_code;
+	long counts;
+
+       // get position of axis 
+       // sprintf(command, "TP%c", axisLabel);
+
+        controller_execute("XQ #COUNTS, 1", &error_code, FALSE );
+
+        if (error_code == 0) {
+		//Chech to see if it finish counting
+		do {
+			usleep(10000);
+			controller_execute("MG Finish", &error_code, FALSE);
+			sscanf(lastResponse, "%d", &finished);
+		}while(!finished)
+		// get the counts
+		controller_execute("MG Counts", &error_code, FALSE);
+		sscanf(lastResponse, "%ld", &counts);
+                *position = (dcs_scaled_t) counts;
+        } else {
+                LOG_WARNING("Error getting current position\n");
+                return XOS_FAILURE;
+        }
+        return XOS_SUCCESS;
+}
+

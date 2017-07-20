@@ -23,4 +23,9 @@ cp pam_authenticate /usr/local/sbin
 
 5) cp Authentication/c/web-auth /etc/pam.d
 
-6) search all the file with old hostname and relpace them with the new ones 
+6) search all the file with old hostname and relpace them with the new ones
+
+7) change the host name, for example change "yangxc" to "xf19id1-w2"
+use "hostname" command to see the local host name.
+
+replace all the localhost name in the .config file and under tomcat directory and so on. 
