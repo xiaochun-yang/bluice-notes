@@ -1,0 +1,39 @@
+the following are the sequence of get data from mercury
+
+1) Connect to xiaSaturn (still use the word saturn, but actually it's mercury)
+
+status = xiaInit("saturn.ini");
+status = xiaStartSystem();
+
+// set the MCA bin size
+double dmcaBinWidth = 8.0;
+double dmcaBinWidthReadback;
+status = xiaSetAcquisitionValues(-1, "mca_bin_width", &dmcaBinWidth);
+status = xiaGetAcquisitionValues(0,"mca_bin_width", &dmcaBinWidthReadback);
+
+
+2) Prepare for data acquisition
+
+status = xiaSetAcquisitionValues(-1, "preset_value", &dpresetTime);
+status = xiaGetAcquisitionValues(0, "preset_value", &dpresetTimeReadback);
+status = xiaSetAcquisitionValues(-1, "peaking_time", &dpeakingTime);
+status = xiaSetAcquisitionValues(-1, "number_mca_channels", &dnumMCAChannels);
+status = xiaGetAcquisitionValues(0, "number_mca_channels", &dnumMCAChannelsReadback);
+
+3) start data acqusition
+
+status = xiaStartRun(-1, 0);
+while (1)
+{
+	status = xiaGetRunData(0, "run_active", &run_active);
+	if (!(run_active & 0x1)) 
+		break;
+}
+status = xiaStopRun(-1);
+//get the live time
+status = xiaGetRunData(0, "livetime", &liveTime);
+//get the real elapsed time
+status = xiaGetRunData(0, "runtime", &elapsedTime);
+// Read the spectrum length
+status = xiaGetRunData(0, "mca_length", (void *)&mcaLength);
+

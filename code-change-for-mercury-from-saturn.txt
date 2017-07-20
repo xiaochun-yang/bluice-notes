@@ -1,0 +1,2 @@
+saturn the key word "preset_runtime" is called "preset_value" in mercury.
+so they should be changed in the file "xiaSaturnAPI.cxx" when compiling it for mercury.
