@@ -4,10 +4,11 @@ set MT=1 as a servo so that the encoder can have higher frequency 23Mhz?
 need a script as following
 InteTime
 #ECOUNTS
+CE~a=5
 Finish=0
-DE=0;		'set encoder to zero
-WT InteTime;	'integration time
-Counts= _TD;	'read encoder counts
+DE~a=0;		'set encoder to zero
+WT ITime;	'integration time
+Counts= _TD~a;	'read encoder counts
 Finish=1;	'ready to read from the program
 EN
 ///////////////////////////////////////////////////////////////////////
@@ -15,45 +16,55 @@ In Bluice side
 
 1) in config file add
 
-galil2.encoder=counter1 1 1 COUNTER //new parameter just like RELATIVE
+galil3.encoder=ion_chamber3 7 1 ECOUNTER //new parameter just like RELATIVE
 ........
 //////////////////////////////////////////////////////////////////////
 2) In dat file add
 
-counter1
+ion_chamber3
 12
-galil2 counter1
+galil2 ion_chamber3
 0 1 1 1 1
 0 1 1 1 1
 
-counter1_op
+ion_chamber3_op
 11
-self counter1_op
+self ion_chamber3_op
 0 1 1 1 1
 0 1 1 1 1
 
-c1
+i3
 4
-self counter1_op 0 rtc1 standardVirtualIonChamber
+self ion_chamber3_op 0 rtc1 standardVirtualIonChamber
 0 1 1 1 1
 0 1 1 1 1
 
 //////////////////////////////////////////////////////////////////////////
 4) add counter1_op.tcl script in the ../dcss/scripts/operations
 
-#counter1_op.tcl
-proc counter1_op_initialize {} {
+#ion_chamber3_op.tcl
+proc ion_chamber3_op_initialize {} {
 }
 
-proc counter1_op_start { time_in_second } {
-    #reset the encoder to 0 first
-    set_encoder counter1 time_in_second
+#in this function, pay attention on 1) gDevice($encoder,status), it can not
+#replace $encoder with "ion_chamber3" directly. 2) the status of the $encoder 
+#is always set to "calibrating" after each set_encoder called. so here we need
+#to change the status to "inactive" so that we can use get_encoder to get the
+value.
 
-    #wait for time_in_second, then read the counter1
+proc ion_chamber3_op_start { time_in_second } {
+    ####set counter integration time
+    set itime [expr $time_in_second*1000]
+    set encoder ion_chamber3
+    set gDevice($encoder,status) inactive
+    set_encoder ion_chamber3 $itime
+    wait_for_encoder ion_chamber3
 
-    get_encoder counter1
-    set encoderValue [wait_for_encoder counter1]
+    #get the counts from the encoder
+    get_encoder ion_chamber3
+    set encoderValue [wait_for_encoder ion_chamber3]
     return [expr $encoderValue]
+
 }
 ///////////////////////////////////////////////////////////////////////////
 5) In dhs/src/dhs_dmc2180.cc
@@ -84,7 +95,7 @@ xos_result_t Dmc2180CounterEncoder::set_position(dcs_scaled_t newPosition) {
         int error_code;
 	int IntegrationTime;
 
-	IntegrationTime = 1000*newPosition;
+	IntegrationTime = *newPosition;
         LOG_INFO1("Yangx Integration Time : %d\n",IntegrationTime);
 
         sprintf(command, "InteTime=%d", IntegrationTime);
@@ -116,7 +127,10 @@ s_result_t Dmc2180CounterEncoder::get_current_position(dcs_scaled_t * position) 
        // get position of axis 
        // sprintf(command, "TP%c", axisLabel);
 
-        controller_execute("XQ #COUNTS, 1", &error_code, FALSE );
+//        controller_execute("XQ #COUNTS, 1", &error_code, FALSE );
+ 	sprintf(command, "~a=\"%c\";""XQ #ECounts,2", axisLabel);
+        *position = (dcs_scaled_t) 100;
+        controller_execute(command, &error_code, FALSE );
 
         if (error_code == 0) {
 		//Chech to see if it finish counting
@@ -135,4 +149,11 @@ s_result_t Dmc2180CounterEncoder::get_current_position(dcs_scaled_t * position) 
         }
         return XOS_SUCCESS;
 }
+
+ for (int axis = 0; axis < DMC2180_MAX_COUNTER_ENCODERS; axis++) {
+                counterEncoder[axis].axisUsed = FALSE;
+                counterEncoder[axis].axisLabel = AxisLabels[axis];
+                counterEncoder[axis].axisIndex = axis;
+                counterEncoder[axis].dmc2180 = this; //allows motor to access controller data
+        }
 
