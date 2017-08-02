@@ -1,0 +1,190 @@
+how to setup encoder as analog output
+This involved to use galil motion controller as a master (only have analog inputs)
+and link it through ethernet to RIO-47xxx (it's digital/analog input/output as a slave) 
+and then to control the analog output.
+
+In the galil script, it's need to setup the link to RIO47000 as the following
+IHF=10,19,2,42<502>2
+
+IHF  using handle F
+The IP is the RIO4700 IP address
+502 port for mudbus 
+2   TCP/IP
+  
+Here is the galil script for outputing the analog voltage
+There are 16bits and 32 bits configuration. 
+We currently use 16 bits version. MI1 (MI0 --32 bits) 
+
+//this one cause problem DA * []
+DM V[1]
+DM R[1]
+VAL=0
+RAL=0
+CHAN=0
+// 0--10V 16bits
+DIV=65536
+//10V
+MUL=10
+SH
+EN
+//16 BIT SET
+#SETV
+V[0]=VAL*DIV/MUL; 'VOLT TO NUMBER
+MBF=,16,CHAN,1,V[]; 'SET VOLT CHANNEL 0
+EN
+//16 BITS READ
+#GETV
+Finished=0
+MBF=,4,CHAN,1,R[]; 'READ VOLT IN CHANNEL 0
+RAL=R[0]*MUL/DIV;  'CHANGE TO VOLT
+Finished=1
+EN
+//'set voltage for piezo 32bits
+#SETV32
+RAL=6000 + CHAN
+AO RAL,VAL
+EN
+//'read piezo voltage 32 bits
+#GETV32
+Finished=0
+MBF=,4,CHAN,1,R[]
+float=R[0]*$8000
+float= float + float + R[0]
+RAL = @REAL[float]
+Finished=1
+EN
+///////////////////////////////////////////////////////////////////////
+In Bluice side
+
+1) in config file add
+
+galil5.encoder=ion_chamber4 2 1 PIEZO //new parameter just like RELATIVE
+galil5.encoder=ion_chamber5 1 1 PIEZO //new parameter just like RELATIVE
+........
+//////////////////////////////////////////////////////////////////////
+2) In dat file add
+
+ion_chamber4
+12
+galil2 ion_chamber4
+0 1 1 1 1
+0 1 1 1 1
+
+ion_chamber4_op
+11
+self ion_chamber4_op
+0 1 1 1 1
+0 1 1 1 1
+
+p1
+4
+self ion_chamber4_op 0 rtc1 standardVirtualIonChamber
+0 1 1 1 1
+0 1 1 1 1
+
+........ 
+same for ion_chamber5
+
+
+//////////////////////////////////////////////////////////////////////////
+4) add counter1_op.tcl script in the ../dcss/scripts/operations
+proc ion_chamber4_op_initialize {} {
+}
+
+proc ion_chamber4_op_start { time_in_second } {
+    #variable ion_chamber_offset
+
+    set encoder ion_chamber4
+    set gDevice($encoder,status) inactive
+#    set_encoder ion_chamber3 $itime
+    wait_for_encoder ion_chamber4
+
+    get_encoder ion_chamber4
+    set encoderValue [wait_for_encoder ion_chamber4]
+    return [expr $encoderValue]
+#    return [expr $encoderValue + $ion_chamber_offset]
+}
+
+///////////////////////////////////////////////////////////////////////////
+5) In dhs/src/dhs_dmc2180.cc
+
+Add the following
+       } else if ( strcmp(encoderTypeStr,"PIEZO") == 0 ) {
+         encoder = &dmc2180.piezoEncoder	
+
+In dmc2180API.h file add the followings
+
+#define DMC2180_MAX_PIEZO_ENCODERS 8
+
+class Dmc2180PiezoEncoder : public  Dmc2180_encoder {
+   public:
+   xos_result_t         get_current_position( dcs_scaled_t * position);
+   xos_result_t         set_position( dcs_scaled_t new_position );
+   };
+
+Dmc2180PiezoEncoder piezoEncoder[DMC2180_MAX_PIEZO_ENCODERS]
+
+
+//////////////////////////////////////////////////////////////////////////
+6) in dhs/src/dmc2180API.cc add the following functions
+
+xos_result_t Dmc2180PiezoEncoder::set_position(dcs_scaled_t newPosition) {
+        // local variables 
+        int error_code;
+
+        LOG_INFO2("Yangx volt=%f axisIndex : %d\n",newPosition, axisIndex);
+
+        sprintf(command, "VAL=%f;""CHAN=%d;""XQ #SETV,3", newPosition, axisIndex);
+        // construct and send message to dmc2180 
+        controller_execute(command, &error_code, FALSE );
+
+        LOG_INFO1("error_code: %d\n",error_code);
+
+        // check for errors 
+        if (error_code != 0) {
+                LOG_WARNING1("error_code: %d\n",error_code);
+
+                // report failure 
+                return XOS_FAILURE;
+        }
+        // report success 
+        return XOS_SUCCESS;
+
+}
+
+xos_result_t Dmc2180PiezoEncoder::get_current_position(dcs_scaled_t * position) {
+
+        LOG_INFO("Entering piezo encoder\n");
+        int error_code;
+        int finished;
+        float val;
+        //char commands[200];
+
+       // get position of axis
+        LOG_INFO1("Yangx axisIndex %d \n", axisIndex);
+        sprintf(command, "CHAN=%d;""XQ #GETV,3", axisIndex);
+        //sprintf(command,"XQ #GETV,3");
+
+        controller_execute(command, &error_code, FALSE );
+
+        if (error_code == 0) {
+                //Chech to see if it finish counting
+                do {
+                        usleep(10000);
+                        controller_execute("MG Finished", &error_code, FALSE);
+                        sscanf(lastResponse, "%d", &finished);
+                }while(!finished);
+
+                // get the counts
+                controller_execute("MG RAL", &error_code, FALSE);
+                sscanf(lastResponse, "%f", &val);
+                *position = (dcs_scaled_t) val;
+LOG_INFO1("yangx counts %ld \n", val);
+LOG_INFO1("yangx postion %lf \n", *position);
+        } else {
+                LOG_WARNING("Error getting current position\n");
+                return XOS_FAILURE;
+        }
+      return XOS_SUCCESS;
+}
+
