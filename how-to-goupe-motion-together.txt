@@ -1,0 +1,12 @@
+ne can goupe several motions together so that it will show the gouped motion in the same window
+
+1) use WBControlView.tcl as a example (my white beam control)
+
+Create a WBControlView class in BluiceWidgets directory.
+
+2) configure this in the Setup.tcl (see "wbcontrol" configure)
+
+3) In "19-ID.config"  add "wbcontrol in the following line 
+
+bluice.beamlineView=detectorPosition goniometer table wbcontrol frontEndApertures mirrorView monoView mirrorApertureView monoApertureView focusingMirrorsView hutchOverview inlineMotorView sampleMotorView slit1Aperture frontEndSlits frontEndApertures
+

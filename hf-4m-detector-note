@@ -1,0 +1,33 @@
+HF-4M detector
+
+1) server 10.19.0.3 (linux Fedora rev. 20)
+
+2) source code /data/pad/pad_dist/src_std
+
+3) server program to link to Bluice with the detector: "exec_hf4m_server"
+
+4) to startup software on linux computer
+ 
+   open 4 windows and execte the following command in each of the window
+
+	a) det_cmd_v4
+	b) det_gather_v4
+	c) det_pad_hwlib_v4
+	d) exec_hf4m_server (communicate with bluice)
+
+5) to shutdown the software
+	first to kill exec_hf4m_server
+	then shutdown rest softwares
+
+
+To start Bluice detector DHS
+
+1) cd /usr/local/dcs/pilatusDhs/scripts
+   ./run.tcl 19-ID    (the exec_hf4m_server need to be started before this execution)
+
+The triggering device for detector (made by Chuck)
+
+It's used DO1 port in galil2 controller (10.19.2.22).
+The shutter uses the DO13 on galil2 controller.
+They are synchronized in the oscillation script () embeded in galil2 controller.
+by now. It will be better if synchronized in hardware.
