@@ -1,0 +1,75 @@
+energy configuration is defined config
+
+energy.config=hold_mirror move_undulator_gap jump_harmonic move_table_vert adjust_detector_vert set_preamplifiers set_detector_threshold move_table_horz move_mfd_vert move_mfd_horz
+show.energy_offset=1
+show.gap_owner=1
+#show.lvdt=1
+show.auto_sample_cal=0
+
+In .dat 
+
+energy_config
+13
+self standardString
+1 1 1 1 1
+0 0 0 0 0
+1 1 1 0 0 0 1 1 0 0 
+
+they are paired as 
+hold_mirror 		1
+move_undulator_gap 	1
+jump_harmonic		1
+move_table_horz		0
+move_table_vert		0
+adjust_detector_vert	0
+set_preamplifiers	0
+set_detector_threshold	1
+move_mfd_vert		0
+move_mfd_horz           0
+
+
+I have changed following lines. Those functions are  dependent of the the gap move. We have no idea
+what will be moved when we move the gap right now. We will have to determine which one need to be 
+adjusted when we move our gap. Right now I just disable all of them. 
+
+in file 
+
+    if {[llength $cfgList] >= [llength $energy_config]} {
+#original        foreach enabled $energy_config name $cfgList {
+#            if {$enabled == "0" \
+#            && $name != "adjust_detector_vert" \
+#            && $name != "move_table_horz" \
+#            && $name != "move_mfd_vert" \
+#            && $name != "move_mfd_horz" \
+#            } {
+#                lappend result $name
+#            }
+#        }
+#yangx modified
+       foreach enabled $energy_config name $cfgList {
+            if {$enabled == "0" \
+            && $name != "adjust_detector_vert" \
+            && $name != "hold_mirror" \
+            && $name != "jump_harmonic" \
+            && $name != "move_table_vert" \
+            && $name != "set_preamplifiers" \
+            && $name != "set_detector_threshold" \
+            && $name != "move_table_horz" \
+            && $name != "move_mfd_vert" \
+            && $name != "move_mfd_horz" \
+            } {
+                lappend result $name
+            }
+        }        
+        if {$result != ""} {
+            set result "warning: energy disabled: $result"
+            return $result
+        }
+    } else {
+        foreach enabled $energy_config {
+            if {$enabled == "0"} {
+                return "some energy conponents disabled"
+            }
+        }
+    }
+
