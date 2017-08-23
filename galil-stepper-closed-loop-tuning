@@ -1,0 +1,13 @@
+Galil stepper closed loop tuning experince
+
+1) KS is a very important factor during tuning process
+
+When motor speed is high, try to lower the KS value. use KS=16 as a standard. Then increase or decrease.
+
+2) IT is a very important factor as well. use IT as 0.1 as a standard. the minumum is 0.04
+
+3) K1 is a very important factor
+
+4) K2 KP KI are less important.
+
+First set K1 to a value like 5. and rest K2,Kp,KI to 0.
