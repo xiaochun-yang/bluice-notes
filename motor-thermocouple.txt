@@ -1,0 +1,8 @@
+I have addd mono motor thermocouple in the bluice
+
+class DoubleCrystalMonoViewDoubleSetID19 of MonoView.tcl
+
+In the method "handleMotorTempChange" It can set the color for the temperature 
+as normal or too host (green or red).
+
+
