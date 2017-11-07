@@ -1,0 +1,17 @@
+We have AMC servo driver failure
+
+Symtom: 1) Feel little force when manually move phi by hand
+	2) when home it. It become even force free.
+
+Replace procedures
+	1) install the DrivWare 7 software in a window PC
+	2) connect the driver to computer through RS232 cable
+	3) Run the program and "open" a project (saved in my laptop and office PC and USB portable disk)
+	4) "connect" to the AMC driver.
+	5) download the "backed up project"
+	6) save it in the non changible memory"
+
+	7) turn the motor power on
+	8) at this time the motor may still feel little force when moved by hand
+	9) Home it by command (galil "FI" command). 
+	10) Now motor should be firm and you can feel it by hand. 

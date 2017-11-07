@@ -1,0 +1,26 @@
+
+1) epics camera controls
+
+   login as a super user "ssh yangx@xf19id1-ioc1"
+	a) sudo -u softioc -s
+	b) go to /epics/iocs
+
+	see status command: manage-iocs status
+
+	c) sudo /usr/sbin/service softioc-cam01(/cam02/cam03) start(/stop/restart)
+
+	d) if you want to change camera IP address do the following
+		cd cam0#
+		change ip in st.cmd file. you need to restart this camera by restart precedure above.
+
+
+2) epics iocs 
+	login as yangx or superuser 
+	1) cd /epics/iocs
+	2) list all the iocs
+	3) if you want to restart for example cryo ioc
+		open the "config" file and find the cryo port (in this case it's 4202)
+        4) telnet localhost 4202
+	>epics
+	5) to restart cryo ioc do "Ctrl x"
+	6) to quit from telnet do "Ctrl ]" 
