@@ -1,0 +1,17 @@
+To make sure detector is perpendicular to the beam
+
+1) move detector to the vertical_1 position and take a image
+
+2) move detector to the vertical_2/3 position and take a image
+
+3) find the distance and divde it to the length between the vertical_1 and vertical_2/3
+   that is the pitch angle
+
+4) make correction of this angle.
+
+same way to make corrections on horizontal position
+
+make sure to put the detector on the rotation axis of the yaw in order to make good corrections.
+
+Also  make sure the beam is filtered very weak so that it will not damage the detector. 
+

@@ -1,0 +1,18 @@
+
+ion_chamber1 (galil3) --> is a ion_chamber located at beamstop position with extended arm
+
+ion_chamber2 (galil2) --> is a ion_chamber located at right after the shutter in the beampath.
+
+ion_chamber6 (galil2) --> is a ion_chamber for old X4 big ion_chamber
+
+ion_chamber4 (galil5) --> is an analog output for piezo control
+
+ion_chamber5 (galil5) --> is an analog output for piezo control
+
+ion_chamber3 (galil3) -->  is a digital cpunter. can be used with flurecence detector
+
+ion_chamber7 (galil12)-->  is a digital cpunter
+
+ion_chamber8 (galil12)-->  is a digital cpunter
+
+ion_chamber9 (galil12)-->  is a digital cpunter

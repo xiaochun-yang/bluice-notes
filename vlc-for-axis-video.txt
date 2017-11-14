@@ -1,0 +1,19 @@
+to save axis video recording
+
+the new firefox and chrome using html5 protocal. It doesn't support axis video recording (too new for axis server)
+
+The way to record the axis video is to use VLC software to record it.
+
+1) install alc on linux
+
+2) click on media to open a network stream
+
+3) set: rtsp://10.19.2.91:554/axis-media/media.amp?camera=1/2/3/4/quad  make sure all small cases letter
+
+(1 is the video 1 .......)
+
+4) login to the video sever
+
+
+
+
