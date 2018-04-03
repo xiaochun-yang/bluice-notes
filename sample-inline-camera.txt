@@ -1,0 +1,59 @@
+Camera setting: inline --- upper camera
+		direct --- lower camera low mag and high mag
+
+
+Program change:
+1)  dcss/scripts/operation/inlineMoveSample.tcl
+
+Changed        
+	 move sample_x by $dx
+        wait_for_devices sample_x
+        move sample_y by $dy
+        wait_for_devices sample_y
+        move sample_z by $dz
+        wait_for_devices sample_z
+    } else {
+        move sample_x by $dx
+        move sample_y by $dy
+        move sample_z by $dz
+
+to  
+        move sample_x by -$dx
+        wait_for_devices sample_x
+        move sample_y by -$dy
+        wait_for_devices sample_y
+        move sample_z by -$dz
+        wait_for_devices sample_z
+    } else {
+        move sample_x by -$dx
+        move sample_y by -$dy
+        move sample_z by -$dz
+
+So that sample_x sample_y and sample_z can move to the right same direction.
+
+2) /BluiceWidget/SampleMotorView.tcl
+
+Changed 
+	itk_component add video {
+            SamplePositioningWidget $itk_interior.video \
+            [::config getImageUrl 1] \
+            sample_sample_camera_constant sample_camera_zoom centerLoop inlineMoveSample \
+             -beamWidthWidget ::device::$gMotorBeamWidth \
+             -beamHeightWidget ::device::$gMotorBeamHeight
+                } {
+                        keep -videoParameters -videoEnabled
+                }
+
+to 
+	itk_component add video {
+            SamplePositioningWidget $itk_interior.video \
+            [::config getImageUrl 1] \
+            sample_sample_camera_constant sample_camera_zoom centerLoop moveSample \
+             -beamWidthWidget ::device::$gMotorBeamWidth \
+             -beamHeightWidget ::device::$gMotorBeamHeight
+                } {
+                        keep -videoParameters -videoEnabled
+                }
+
+This change will make "sample motor view" in the staff->develop tool agree with the Hutch view.
+

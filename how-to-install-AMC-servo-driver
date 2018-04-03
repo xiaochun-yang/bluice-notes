@@ -14,4 +14,16 @@ Replace procedures
 	7) turn the motor power on
 	8) at this time the motor may still feel little force when moved by hand
 	9) Home it by command (galil "FI" command). 
-	10) Now motor should be firm and you can feel it by hand. 
+	10) Now motor should be firm and you can feel it by hand.
+
+
+Drive failed again and with the same symptom. To solve it, did the following
+
+	1) load the original configure file from DriveWare7
+	2) do "auto commutation" (find feedback type and configure it)
+        3) ignore the message
+	4) (not sure weather I turned power on/off the controller)
+        5) home it (with chuck's command)
+	6) click on "store" button to save everything in the nonvoilient memory 
+
+ 

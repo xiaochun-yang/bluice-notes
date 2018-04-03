@@ -1,0 +1,6 @@
+The beamstop_z will not run if the beam_width_x or beam_height_y are can't be 
+displayed on the screen. that means the value is a negtive number.
+
+In this case, You need to set the values to a positive number.
+
+Reason: unknown for me now

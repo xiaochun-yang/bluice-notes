@@ -1,4 +1,9 @@
 how to setup encoder as counter
+
+Hardwire connection: connect BNC center wire to the encoder A+
+and BNC shield to the encoder gound. set the encoder in the pulse 
+and direction mode. 
+
 In galil side, it need to set encoder as pulse and direction CE=5. Also
 set MT=1 as a servo so that the encoder can have higher frequency 23Mhz?
 need a script as following

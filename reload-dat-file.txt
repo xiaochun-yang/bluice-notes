@@ -1,0 +1,4 @@
+in order to reload the new dat file. The dat file in dcss/dbmapfile need to be removed
+then do ./dcss 19-ID -r ../../dcsconfig/data
+
+Otherwise the old data bese is still being used 
